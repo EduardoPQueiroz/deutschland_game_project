@@ -1,2 +1,2 @@
 # deutschland_game_project
-Repositório destinado a criação de um jogo de rpg baseado em texto envolvendo a cultura e história da alemanha.
+Repositório destinado à criação de um jogo de tomada de decisões estratégicas baseado em textos que envolvem a cultura e a história da Alemanha.
