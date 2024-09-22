@@ -5,19 +5,20 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "Dialogos")
+@Table(name = "Dialogo")
 @Entity
 @Getter
 @Setter
 public class Dialogos {
-    @Column(name = "id_dialogo")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int idDialogo;
+    private Integer id;
 
-    @Column(name = "tipo_dialogo")
-    private String tipoDialogo;
+    @Column(name = "mensagem")
+    private String mensagem;
 
-    @Column(name = "texto_dialogo")
-    private String textoDialogo;
+    @JoinColumn(name = "id_personagem")
+    @OneToOne
+    private Personagens personagens;
 }

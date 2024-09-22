@@ -1,4 +1,7 @@
 package br.com.etechoracio.deutschland_game.repositories;
 
-public interface UsuarioRepository {
+import br.com.etechoracio.deutschland_game.entities.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 }

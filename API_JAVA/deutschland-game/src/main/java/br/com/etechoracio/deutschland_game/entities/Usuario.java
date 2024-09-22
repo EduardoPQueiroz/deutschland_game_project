@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Usuario {
-    @Column(name = "id_usuario")
+    @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
@@ -18,18 +18,4 @@ public class Usuario {
     @Column(name = "nome_usuario")
     private String nomeUsuario;
 
-    @Column
-    private float diplomacia;
-
-    @Column(name = "rept_igreja")
-    private float reptIgreja;
-
-    @Column
-    private float popularidade;
-
-    @Column
-    private float dinheiro;
-
-    @Column
-    private float exercito;
 }

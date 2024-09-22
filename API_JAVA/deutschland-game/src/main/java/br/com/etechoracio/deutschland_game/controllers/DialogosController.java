@@ -12,8 +12,9 @@ import java.util.List;
 public class DialogosController {
     @Autowired
     private DialogosService service;
-    @GetMapping
+    @GetMapping("/listar")
     public List<Dialogos> listar(){return service.listar();}
-    @PostMapping
-    public Dialogos cadastrar(@RequestBody Dialogos dialogos){return service.cadastrar(dialogos);}
+
+//    @PostMapping
+//    public Dialogos cadastrar(@RequestBody Dialogos dialogos){return service.cadastrar(dialogos);}
 }

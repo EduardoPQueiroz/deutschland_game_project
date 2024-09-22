@@ -5,19 +5,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Personagens")
+@Table(name = "Personagem")
 @Getter
 @Setter
 public class Personagens {
     @Id
-    @Column(name = "id_personagem")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPersonagem;
-
-    @Column(name = "tipo_personagem")
-    private String tipoPersonagem;
+    private Integer id;
 
     @Column(name = "nome")
-    private String nomePersonagem;
+    private String nome;
 
 }

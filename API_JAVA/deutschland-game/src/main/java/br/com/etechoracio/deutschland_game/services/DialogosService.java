@@ -12,11 +12,13 @@ public class DialogosService {
     @Autowired
     private DialogosRepository repository;
     public List<Dialogos> listar(){return repository.findAll();}
-    public Dialogos cadastrar(Dialogos dialogos){
-        var existe = repository.findByTexto(dialogos.getTextoDialogo());
-        if (!existe.isEmpty()) {
-            throw new RuntimeException("Dialógo já cadastrado");
-        }
-        return repository.save(dialogos);
-    }
+
+//  O FRONT NAO PRECISA CADASTRAR UM DIÁLOGO !!!!!! O DIALOGO JÁ VAI ESTAR NO BANCO
+//    public Dialogos cadastrar(Dialogos dialogos){
+//        var existe = repository.findByTexto(dialogos.getTextoDialogo());
+//        if (!existe.isEmpty()) {
+//            throw new RuntimeException("Dialógo já cadastrado");
+//        }
+//        return repository.save(dialogos);
+//    }
 }
