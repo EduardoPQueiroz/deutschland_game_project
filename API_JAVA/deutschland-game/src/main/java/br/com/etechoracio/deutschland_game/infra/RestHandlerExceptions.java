@@ -1,5 +1,6 @@
 package br.com.etechoracio.deutschland_game.infra;
 
+import br.com.etechoracio.deutschland_game.exceptions.PersonagemIdNotFoundException;
 import br.com.etechoracio.deutschland_game.exceptions.UserNameExceededCharLimitException;
 import br.com.etechoracio.deutschland_game.exceptions.UserNameSpecialCharsException;
 import br.com.etechoracio.deutschland_game.exceptions.UserNotFoundByIdException;
@@ -24,6 +25,11 @@ public class RestHandlerExceptions extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UserNotFoundByIdException.class)
     private ResponseEntity<String> userNotFoundByIdHandler(UserNotFoundByIdException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(PersonagemIdNotFoundException.class)
+    private ResponseEntity<String> personagemIdNotFoundHandler(PersonagemIdNotFoundException e){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 

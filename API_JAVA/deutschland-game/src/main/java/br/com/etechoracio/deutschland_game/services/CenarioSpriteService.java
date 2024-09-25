@@ -15,10 +15,6 @@ public class CenarioSpriteService {
     @Autowired
     private CenarioSpriteRepository cenarioSpriteRepository;
 
-    public List<CenarioSprite> getAllCenarios(){
-        return cenarioSpriteRepository.findAll();
-    }
-
     public CenarioSprite getCenarioById(long id) {
         return cenarioSpriteRepository.findById(id).orElse(null);
     }

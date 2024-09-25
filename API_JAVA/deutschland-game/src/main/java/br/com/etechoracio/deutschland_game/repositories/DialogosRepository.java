@@ -9,6 +9,4 @@ import java.util.List;
 @Repository
 public interface DialogosRepository extends JpaRepository<Dialogos, Integer> {
 
-//    List<Dialogos> findByTexto(String Texto); ???????????????
-
 }
