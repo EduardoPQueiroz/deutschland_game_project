@@ -27,7 +27,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping(path = "deletar/id/{id}")
-    public ResponseEntity<String> deletar(@PathVariable("id") Integer id){
+    public ResponseEntity<String> deletar(@PathVariable("id") Long id){
         usuarioService.deletar(id);
         return ResponseEntity.status(HttpStatus.OK).body("Usuário deletedo com sucesso!");
     }

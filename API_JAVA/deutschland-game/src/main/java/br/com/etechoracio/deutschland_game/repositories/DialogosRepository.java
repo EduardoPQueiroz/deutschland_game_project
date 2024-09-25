@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DialogosRepository extends JpaRepository<Dialogos, Integer> {
+public interface DialogosRepository extends JpaRepository<Dialogos, Long> {
 
 }

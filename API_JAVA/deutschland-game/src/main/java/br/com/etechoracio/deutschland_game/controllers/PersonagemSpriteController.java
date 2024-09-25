@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/personagens")
+@RequestMapping("/personagensMongo")
 public class PersonagemSpriteController {
     @Autowired
     private PersonagemSpriteService personagemSpriteService;

@@ -19,7 +19,7 @@ public class PersonagemController {
     private PersonagemService personagemService;
 
     @GetMapping(path = "/id/{id}")
-    public ResponseEntity<Personagens> getPersonagemById(@PathVariable("id") long id) throws PersonagemIdNotFoundException {
+    public ResponseEntity<Personagens> getPersonagemById(@PathVariable("id") Long id) throws PersonagemIdNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(personagemService.getPersonagensById(id));
     }
 }
