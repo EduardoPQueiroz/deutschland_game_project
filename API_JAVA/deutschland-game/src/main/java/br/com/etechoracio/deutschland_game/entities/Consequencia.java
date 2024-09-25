@@ -13,13 +13,13 @@ public class Consequencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "valor_mudanca", columnDefinition = "DECIMAL(10,2)")
     private Double valorMudanca;
 
     @Column(name = "foiPositivo", columnDefinition = "BIT")
-    private Integer foiPositivo;
+    private Long foiPositivo;
 
     @JoinColumn(name = "conquista_id")
     @OneToOne

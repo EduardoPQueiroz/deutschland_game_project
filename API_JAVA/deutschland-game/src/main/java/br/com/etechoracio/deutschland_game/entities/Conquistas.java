@@ -13,7 +13,7 @@ public class Conquistas {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "atributo")
     private String atributo;

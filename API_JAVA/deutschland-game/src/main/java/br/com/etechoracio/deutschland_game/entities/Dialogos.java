@@ -13,7 +13,7 @@ public class Dialogos {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Integer id;
+    private Long id;
 
     @Column(name = "mensagem")
     private String mensagem;
