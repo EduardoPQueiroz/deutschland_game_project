@@ -16,7 +16,7 @@ public class DialogosController {
     @Autowired
     private DialogosService service;
 
-    @GetMapping("/listar")
+    @GetMapping(path = "/listar")
     public ResponseEntity<Dialogos> listarDialogoAleatorio() {
         List<Dialogos> dialogos = service.listar();
         if(dialogos.isEmpty()){

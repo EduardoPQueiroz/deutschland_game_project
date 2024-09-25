@@ -6,10 +6,8 @@ import br.com.etechoracio.deutschland_game.repositories.PersonagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class PersonagemSevice {
+public class PersonagemService {
 
     @Autowired
     private PersonagemRepository personagemRepository;

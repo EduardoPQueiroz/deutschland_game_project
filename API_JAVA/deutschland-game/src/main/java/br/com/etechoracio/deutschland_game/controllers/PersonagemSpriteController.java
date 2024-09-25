@@ -20,7 +20,7 @@ public class PersonagemSpriteController {
         return personagemSpriteService.getAllPersonagens();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(path = "/id/{id}")
     public PersonagensSprite getPersonagemById(@PathVariable("id") long id) {
         return personagemSpriteService.getPersonagemById(id);
     }
