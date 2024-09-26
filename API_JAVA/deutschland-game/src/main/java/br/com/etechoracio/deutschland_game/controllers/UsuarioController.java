@@ -21,7 +21,7 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping(path = "cadastrar")
+    @PostMapping (path = "cadastrar")
     public ResponseEntity<Usuario> cadastrar(@RequestBody CadastroUsuarioDto model){
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.cadastrar(model));
     }
