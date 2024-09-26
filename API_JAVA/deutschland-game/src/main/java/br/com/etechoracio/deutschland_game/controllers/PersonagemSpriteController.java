@@ -15,8 +15,8 @@ public class PersonagemSpriteController {
     @Autowired
     private PersonagemSpriteService personagemSpriteService;
 
-    @GetMapping
-    public List<PersonagensSprite> getPersonagens(){
+    @GetMapping("/listar")
+    public List<PersonagensSprite> getPersosnagens(){
         return personagemSpriteService.getAllPersonagens();
     }
 
