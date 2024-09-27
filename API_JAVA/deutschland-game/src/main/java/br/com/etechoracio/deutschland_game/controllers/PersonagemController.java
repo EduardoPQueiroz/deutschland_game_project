@@ -2,7 +2,7 @@ package br.com.etechoracio.deutschland_game.controllers;
 
 import br.com.etechoracio.deutschland_game.entities.Personagens;
 import br.com.etechoracio.deutschland_game.exceptions.PersonagemIdNotFoundException;
-import br.com.etechoracio.deutschland_game.services.PersonagemSevice;
+import br.com.etechoracio.deutschland_game.services.PersonagemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonagemController {
 
     @Autowired
-    private PersonagemSevice personagemService;
+    private PersonagemService personagemService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Personagens> getPersonagemById(@PathVariable("id") long id) throws PersonagemIdNotFoundException {
+    @GetMapping(path = "/id/{id}")
+    public ResponseEntity<Personagens> getPersonagemById(@PathVariable("id") Long id) throws PersonagemIdNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(personagemService.getPersonagensById(id));
     }
 }

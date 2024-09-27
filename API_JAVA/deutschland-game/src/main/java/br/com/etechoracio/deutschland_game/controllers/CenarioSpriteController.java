@@ -15,7 +15,7 @@ public class CenarioSpriteController {
     @Autowired
     private CenarioSpriteService cenarioSpriteService;
 
-    @GetMapping("/{id}")
+    @GetMapping(path = "/id/{id}")
     public CenarioSprite getCenarioById(@PathVariable("id") long id){
         return cenarioSpriteService.getCenarioById(id);
     }

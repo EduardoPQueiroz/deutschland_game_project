@@ -35,7 +35,7 @@ public class UsuarioService {
         return usuarioRepository.save(user);
     }
 
-    public void deletar(Integer id){
+    public void deletar(Long id){
         var user = usuarioRepository.findById(id).orElseThrow(UserNotFoundByIdException::new);
 
         usuarioRepository.delete(user);

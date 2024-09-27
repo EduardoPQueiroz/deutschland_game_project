@@ -21,13 +21,13 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping("cadastrar")
+    @PostMapping (path = "cadastrar")
     public ResponseEntity<Usuario> cadastrar(@RequestBody CadastroUsuarioDto model){
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.cadastrar(model));
     }
 
-    @DeleteMapping("deletar/{id}")
-    public ResponseEntity<String> deletar(@PathVariable("id") Integer id){
+    @DeleteMapping(path = "deletar/id/{id}")
+    public ResponseEntity<String> deletar(@PathVariable("id") Long id){
         usuarioService.deletar(id);
         return ResponseEntity.status(HttpStatus.OK).body("Usuário deletedo com sucesso!");
     }
