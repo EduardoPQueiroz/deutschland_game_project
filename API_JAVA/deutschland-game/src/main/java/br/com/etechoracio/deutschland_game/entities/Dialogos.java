@@ -21,4 +21,12 @@ public class Dialogos {
     @JoinColumn(name = "id_personagem")
     @OneToOne
     private Personagens personagens;
+
+    public Personagens getPersonagens() {
+        return personagens;
+    }
+
+    public void setPersonagens(Personagens personagens) {
+        this.personagens = personagens;
+    }
 }

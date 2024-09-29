@@ -15,11 +15,6 @@ public class PersonagemSpriteController {
     @Autowired
     private PersonagemSpriteService personagemSpriteService;
 
-    @GetMapping("/listar")
-    public List<PersonagensSprite> getPersosnagens(){
-        return personagemSpriteService.getAllPersonagens();
-    }
-
     @GetMapping(path = "/id/{id}")
     public PersonagensSprite getPersonagemById(@PathVariable("id") long id) {
         return personagemSpriteService.getPersonagemById(id);

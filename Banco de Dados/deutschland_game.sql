@@ -6,7 +6,6 @@ CREATE TABLE Usuario (
     nome_usuario VARCHAR(64) NOT NULL
 );
 
-
 CREATE TABLE Conquistas (
     id BIGINT IDENTITY PRIMARY KEY,
     atributo VARCHAR(64) NOT NULL, 
@@ -17,7 +16,8 @@ CREATE TABLE Conquistas (
 
 CREATE TABLE Personagem (
     id BIGINT IDENTITY PRIMARY KEY,
-    nome VARCHAR(128) NOT NULL    
+    nome VARCHAR(128) NOT NULL,
+	personagemImg text
 );
 
 CREATE TABLE Dialogo (
@@ -26,7 +26,6 @@ CREATE TABLE Dialogo (
     id_personagem BIGINT NOT NULL, 
     FOREIGN KEY (id_personagem) REFERENCES Personagem(id)
 );
-
 
 CREATE TABLE Consequencia (
     id BIGINT IDENTITY PRIMARY KEY,
@@ -37,7 +36,6 @@ CREATE TABLE Consequencia (
     FOREIGN KEY (dialogo_id) REFERENCES Dialogo(id),
     FOREIGN KEY (conquista_id) REFERENCES Conquistas(id)
 );
-
 
 -- Inserts de teste/exemplo
 

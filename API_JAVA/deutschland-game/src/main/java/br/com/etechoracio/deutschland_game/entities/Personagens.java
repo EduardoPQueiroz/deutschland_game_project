@@ -17,4 +17,7 @@ public class Personagens {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "personagemImg")
+    private String personagemImg;
+
 }
