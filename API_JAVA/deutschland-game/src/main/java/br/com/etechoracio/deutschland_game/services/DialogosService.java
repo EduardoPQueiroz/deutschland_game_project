@@ -5,8 +5,6 @@ import br.com.etechoracio.deutschland_game.entities.PersonagensSprite;
 import br.com.etechoracio.deutschland_game.repositories.DialogosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.etechoracio.deutschland_game.entities.Personagens;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,6 @@ public class DialogosService {
     @Autowired
     private PersonagemSpriteService personagemSpriteService;
 
-
     public List<Dialogos> listar() {
         return repository.findAll();
     }
@@ -35,14 +32,16 @@ public class DialogosService {
         Random random = new Random();
         List<Dialogos> dialogosSorteados = new ArrayList<>();
 
-
         for (int i = 0; i < 8 && !dialogos.isEmpty(); i++) {
-            int randomIndex = random.nextInt(dialogos.size());//Me fale se essa parte pode melhorar 😎
+            int randomIndex = random.nextInt(dialogos.size());
             Dialogos dialogo = dialogos.remove(randomIndex);
 
+            // Buscar o PersonagensSprite no MongoDB utilizando o ID do Personagem do diálogo
             PersonagensSprite sprite = personagemSpriteService.getPersonagemById(dialogo.getPersonagens().getId());
+
+            // Atualizar o Dialogos com o sprite encontrado, se existir
             if (sprite != null) {
-                dialogo.getPersonagens().setPersonagemImg(sprite.getspritePersonagem());
+                dialogo.setPersonagensSprite(sprite);
             }
 
             dialogosSorteados.add(dialogo);

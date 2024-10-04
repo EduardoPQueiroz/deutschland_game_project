@@ -1,6 +1,5 @@
 package br.com.etechoracio.deutschland_game.entities;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,11 +21,6 @@ public class Dialogos {
     @OneToOne
     private Personagens personagens;
 
-    public Personagens getPersonagens() {
-        return personagens;
-    }
-
-    public void setPersonagens(Personagens personagens) {
-        this.personagens = personagens;
-    }
+    @Transient
+    private PersonagensSprite personagensSprite;
 }
