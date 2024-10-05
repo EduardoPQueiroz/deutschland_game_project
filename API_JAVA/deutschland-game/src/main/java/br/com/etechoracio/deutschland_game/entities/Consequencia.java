@@ -18,8 +18,8 @@ public class Consequencia {
     @Column(name = "valor_mudanca", columnDefinition = "DECIMAL(10,2)")
     private Double valorMudanca;
 
-    @Column(name = "foiPositivo", columnDefinition = "BIT")
-    private Long foiPositivo;
+    @Column(name = "resposta", columnDefinition = "BIT")
+    private Long resposta;
 
     @JoinColumn(name = "conquista_id")
     @OneToOne

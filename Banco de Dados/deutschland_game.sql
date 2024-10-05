@@ -34,7 +34,7 @@ CREATE TABLE Consequencia (
     id BIGINT IDENTITY PRIMARY KEY,
     dialogo_id BIGINT NOT NULL,        
     conquista_id BIGINT NOT NULL,      
-	foiPositivo BIT NOT NULL,
+	resposta BIT NOT NULL,
     valor_mudanca DECIMAL(10,2) NOT NULL, 
     FOREIGN KEY (dialogo_id) REFERENCES Dialogo(id),
     FOREIGN KEY (conquista_id) REFERENCES Conquistas(id)
@@ -46,6 +46,9 @@ CREATE TABLE Era (
 	nome varchar(30) NOT NULL UNIQUE,
 
 )
+
+alter table Dialogo add id_era bigint
+alter table Dialogo add foreign key (id_era) references Era(id)
 
 -- Inserts de teste/exemplo
 
