@@ -21,6 +21,10 @@ public class Dialogos {
     @OneToOne
     private Personagens personagens;
 
+    @JoinColumn(name = "id_era")
+    @OneToOne
+    private Era eras;
+
     @Transient
     private PersonagensSprite personagensSprite;
 }
