@@ -10,9 +10,9 @@ import lombok.Setter;
 @Setter
 public class Conquistas {
 
-    @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
     @Column(name = "atributo")

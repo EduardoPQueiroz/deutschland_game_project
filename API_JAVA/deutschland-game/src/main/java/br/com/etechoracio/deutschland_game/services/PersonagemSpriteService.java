@@ -16,10 +16,6 @@ public class PersonagemSpriteService {
     @Autowired
     private PersonagemSpriteRepository personagemSpriteRepository;
 
-    public List<PersonagensSprite> getAllPersonagens() {
-        return personagemSpriteRepository.findAll();
-    }
-
     public PersonagensSprite getPersonagemById(long id) {
         return personagemSpriteRepository.findById(id).orElse(null);
     }

@@ -8,23 +8,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Random;
 
 @RestController
 @RequestMapping("/dialogos")
 public class DialogosController {
+
     @Autowired
     private DialogosService service;
 
-    @GetMapping(path = "/listar")
-    public ResponseEntity<Dialogos> listarDialogoAleatorio() {
-        List<Dialogos> dialogos = service.listar();
-        if(dialogos.isEmpty()){
+    @GetMapping("/listar")
+    public ResponseEntity<List<Dialogos>> listarDialogosAleatorios() {
+        List<Dialogos> dialogos = service.obterDialogosAleatorios();
+        if (dialogos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        Random random = new Random();
-        int randomIndex = random.nextInt(dialogos.size());
-        Dialogos dialogoSorterteado = dialogos.get(randomIndex);
-        return new ResponseEntity<>(dialogoSorterteado, HttpStatus.OK);
+        return new ResponseEntity<>(dialogos, HttpStatus.OK);
     }
 }

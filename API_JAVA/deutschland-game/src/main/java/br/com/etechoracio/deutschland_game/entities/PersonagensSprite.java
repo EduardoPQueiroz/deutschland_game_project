@@ -26,4 +26,6 @@ public class PersonagensSprite {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 }

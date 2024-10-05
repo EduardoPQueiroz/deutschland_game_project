@@ -1,6 +1,5 @@
 package br.com.etechoracio.deutschland_game.entities;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,4 +20,7 @@ public class Dialogos {
     @JoinColumn(name = "id_personagem")
     @OneToOne
     private Personagens personagens;
+
+    @Transient
+    private PersonagensSprite personagensSprite;
 }
