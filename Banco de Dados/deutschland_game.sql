@@ -40,10 +40,22 @@ CREATE TABLE Consequencia (
     FOREIGN KEY (conquista_id) REFERENCES Conquistas(id)
 );
 
+EXEC sp_rename 'Consequencia.foiPositivo',  'resposta', 'COLUMN'; -- mudei o nome da coluna - PRECISA EXCUTAR ISSO NO SEU BANCO
+
 CREATE TABLE Era (
 
 	id BIGINT IDENTITY PRIMARY KEY,
 	nome varchar(30) NOT NULL UNIQUE,
+
+)
+
+create table RespostasTexto(
+
+	id bigint not null primary key identity,
+	conteudo varchar(250) not null,
+	escolha bit NOT NULL,
+	id_dialogo bigint not null,
+	foreign key (id_dialogo) references Dialogo(id)
 
 )
 
