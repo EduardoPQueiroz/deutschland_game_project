@@ -13,7 +13,7 @@ CREATE TABLE Personagem (
 
 CREATE TABLE Era (
     id BIGINT IDENTITY PRIMARY KEY,
-    nome VARCHAR(30) NOT NULL UNIQUE
+    nome VARCHAR(40) NOT NULL UNIQUE
 );
 
 CREATE TABLE Dialogo (
@@ -27,10 +27,7 @@ CREATE TABLE Dialogo (
 
 CREATE TABLE Conquistas (
     id BIGINT IDENTITY PRIMARY KEY,
-    atributo VARCHAR(64) NOT NULL, 
-    valor DECIMAL(10,2) NOT NULL,  
-    id_usuario BIGINT NOT NULL,        
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
+    atributo VARCHAR(64) NOT NULL
 );
 
 create table ConquistasUsuario(
@@ -61,4 +58,3 @@ CREATE TABLE RespostasTexto (
     id_dialogo BIGINT NOT NULL,
     FOREIGN KEY (id_dialogo) REFERENCES Dialogo(id)
 );
-
