@@ -18,11 +18,8 @@ public class Conquistas {
     @Column(name = "atributo")
     private String atributo;
 
-    @Column(name = "valor", columnDefinition = "DECIMAL(10,2)")
-    private Double valor;
-
-    @JoinColumn(name = "id_usuario")
-    @OneToOne
-    private Usuario usuario;
+//    @JoinColumn(name = "id_usuario")
+//    @OneToOne
+//    private Usuario usuario;
 
 }
