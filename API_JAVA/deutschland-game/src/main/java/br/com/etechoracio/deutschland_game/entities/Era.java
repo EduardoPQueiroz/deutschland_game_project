@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "Era")
 @Getter
 @Setter
-@Table(name = "Era")
 public class Era {
 
     @Column(name = "id")
@@ -19,3 +19,4 @@ public class Era {
     private String nome;
 
 }
+
