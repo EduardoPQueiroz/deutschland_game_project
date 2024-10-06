@@ -1,6 +1,7 @@
 package br.com.etechoracio.deutschland_game.services;
 
 import br.com.etechoracio.deutschland_game.entities.Dialogos;
+import br.com.etechoracio.deutschland_game.entities.Era;
 import br.com.etechoracio.deutschland_game.entities.PersonagensSprite;
 import br.com.etechoracio.deutschland_game.repositories.DialogosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class DialogosService {
 
     public List<Dialogos> listar() {
         return repository.findAll();
+    }
+
+    public List<Dialogos> dialogosByEraID(Era idEra){
+        return repository.findAllByEras(idEra);
     }
 
     public List<Dialogos> obterDialogosAleatorios() {
