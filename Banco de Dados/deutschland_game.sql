@@ -29,8 +29,6 @@ CREATE TABLE Conquistas (
     id BIGINT IDENTITY PRIMARY KEY,
     atributo VARCHAR(64) NOT NULL, 
     valor DECIMAL(10,2) NOT NULL,  
-    id_usuario BIGINT NOT NULL,        
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
 
 create table ConquistasUsuario(
