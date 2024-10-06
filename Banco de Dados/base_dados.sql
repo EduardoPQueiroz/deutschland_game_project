@@ -1,5 +1,27 @@
 use deutschland_game
 
+-- PERSONAGENS
+
+-- Diplomacia
+INSERT INTO Personagem (nome) VALUES ('Joachim von Ribbentrop'); -- 1
+INSERT INTO Personagem (nome) VALUES ('Friedrich von Hohenstaufen'); -- 2
+
+-- Igreja
+INSERT INTO Personagem (nome) VALUES ('Martinho Lutero'); -- 3
+INSERT INTO Personagem (nome) VALUES ('Papa Pio XII'); -- 4
+
+-- Povo
+INSERT INTO Personagem (nome) VALUES ('Micheal Braun'); -- 5
+INSERT INTO Personagem (nome) VALUES ('Thomas Fritz'); -- 6
+
+-- Exército
+INSERT INTO Personagem (nome) VALUES ('Johann Tserclaes'); -- 7
+INSERT INTO Personagem (nome) VALUES ('Gerd von Rundstedt'); -- 8
+
+-- Dinheiro
+INSERT INTO Personagem (nome) VALUES ('Jakob Fugger'); -- 9 
+INSERT INTO Personagem (nome) VALUES ('Hjalmar Schacht'); -- 10
+
 -- CONQUISTAS
 
 	select * from Conquistas 
@@ -28,7 +50,7 @@ select * from Consequencia
 -- 1
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('Os Normandos estão se expandindo demais e conquistando meus territórios.
-Preciso de sua ajuda contra seu avanço no sul da Itália.', 3, 1)
+Preciso de sua ajuda contra seu avanço no sul da Itália.', 3, 1) 
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('O desejo de vossa santidade é meu desejo também.', 1, 1)
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Sinto muito, porém não posso te ajudar.', 0, 1)
@@ -136,28 +158,13 @@ INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VAL
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 3, 0, -50) -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 4, 0, -70) -- economia
 
--- PERSONAGENS
-
--- Diplomacia
-INSERT INTO Personagem (nome) VALUES ('Joachim von Ribbentrop'); -- 1
-INSERT INTO Personagem (nome) VALUES ('Friedrich von Hohenstaufen'); -- 2
-
--- Igreja
-INSERT INTO Personagem (nome) VALUES ('Martinho Lutero'); -- 3
-INSERT INTO Personagem (nome) VALUES ('Papa Pio XII'); -- 4
-
--- Povo
-INSERT INTO Personagem (nome) VALUES ('Micheal Braun'); -- 5
-INSERT INTO Personagem (nome) VALUES ('Thomas Fritz'); -- 6
-
--- Exército
-INSERT INTO Personagem (nome) VALUES ('Johann Tserclaes'); -- 7
-INSERT INTO Personagem (nome) VALUES ('Gerd von Rundstedt'); -- 8
-
--- Dinheiro
-INSERT INTO Personagem (nome) VALUES ('Jakob Fugger'); -- 9 
-INSERT INTO Personagem (nome) VALUES ('Hjalmar Schacht'); -- 10
-
 SELECT * FROM Personagem 
 
-DBCC CHECKIDENT ('Consequencia', RESEED, 0); -- isso reseta o identity (autoincremento do id)
+DBCC CHECKIDENT ('Conquistas', RESEED, 1); -- isso reseta o identity (autoincremento do id)
+DBCC CHECKIDENT ('ConquistasUsuario', RESEED, 1)
+DBCC CHECKIDENT ('Consequencia', RESEED, 1)
+DBCC CHECKIDENT ('Dialogo', RESEED, 1)
+DBCC CHECKIDENT ('Era', RESEED, 1)
+DBCC CHECKIDENT ('Personagem', RESEED, 1)
+DBCC CHECKIDENT ('RespostasTexto', RESEED, 1)
+DBCC CHECKIDENT ('Usuario', RESEED, 1)
