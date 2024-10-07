@@ -1,7 +1,10 @@
 package br.com.etechoracio.deutschland_game.controllers;
 
+import br.com.etechoracio.deutschland_game.dtos.LoadDialogosDatasDto;
 import br.com.etechoracio.deutschland_game.entities.Dialogos;
+import br.com.etechoracio.deutschland_game.entities.Era;
 import br.com.etechoracio.deutschland_game.services.DialogosService;
+import br.com.etechoracio.deutschland_game.services.LoadDialogosDatasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +16,12 @@ import java.util.List;
 @RequestMapping("/dialogos")
 public class DialogosController {
 
-    @Autowired
-    private DialogosService service;
+    private final DialogosService service;
+    private final LoadDialogosDatasService dialogosDatasService;
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<Dialogos>> listarDialogosAleatorios() {
-        List<Dialogos> dialogos = service.obterDialogosAleatorios();
-        if (dialogos.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(dialogos, HttpStatus.OK);
+    @Autowired
+    public DialogosController(DialogosService service, LoadDialogosDatasService dialogosDatasService) {
+        this.service = service;
+        this.dialogosDatasService = dialogosDatasService;
     }
 }

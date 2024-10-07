@@ -1,5 +1,6 @@
 package br.com.etechoracio.deutschland_game.services;
 
+import br.com.etechoracio.deutschland_game.entities.Dialogos;
 import br.com.etechoracio.deutschland_game.entities.Personagens;
 import br.com.etechoracio.deutschland_game.exceptions.PersonagemIdNotFoundException;
 import br.com.etechoracio.deutschland_game.repositories.PersonagemRepository;
@@ -15,6 +16,5 @@ public class PersonagemService {
     public Personagens getPersonagensById(Long id) throws PersonagemIdNotFoundException{
         return personagemRepository.findById(id).orElseThrow(PersonagemIdNotFoundException::new);
     }
-
 
 }

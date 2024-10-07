@@ -25,6 +25,4 @@ public class Dialogos {
     @OneToOne
     private Era eras;
 
-    @Transient
-    private PersonagensSprite personagensSprite;
 }
