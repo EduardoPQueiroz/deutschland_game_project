@@ -1,9 +1,7 @@
 package br.com.etechoracio.deutschland_game.services;
 
 import br.com.etechoracio.deutschland_game.dtos.LoadDialogosDatasDto;
-import br.com.etechoracio.deutschland_game.dtos.LoadRespostasDialogosDto;
 import br.com.etechoracio.deutschland_game.entities.Dialogos;
-import br.com.etechoracio.deutschland_game.entities.RespostasTexto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +14,16 @@ public class LoadDialogosDatasService {
     private final PersonagemSpriteService personagemSpriteService;
     private final LoadRespostasDialogosService loadRespostasDialogosService;
     private final RespostasTextoService respostasTextoService;
+    private final LoadConsequenciasService loadConsequenciasService;
 
     private final LoadPersonagemService loadPersonagemService;
 
     @Autowired
-    public LoadDialogosDatasService(PersonagemSpriteService personagemSpriteService, LoadRespostasDialogosService loadRespostasDialogosService, RespostasTextoService respostasTextoService, LoadPersonagemService loadPersonagemService) {
+    public LoadDialogosDatasService(PersonagemSpriteService personagemSpriteService, LoadRespostasDialogosService loadRespostasDialogosService, RespostasTextoService respostasTextoService, LoadConsequenciasService loadConsequenciasService, LoadPersonagemService loadPersonagemService) {
         this.personagemSpriteService = personagemSpriteService;
         this.loadRespostasDialogosService = loadRespostasDialogosService;
         this.respostasTextoService = respostasTextoService;
+        this.loadConsequenciasService = loadConsequenciasService;
         this.loadPersonagemService = loadPersonagemService;
     }
 
@@ -38,7 +38,9 @@ public class LoadDialogosDatasService {
 
             var loadPersonagemDto = loadPersonagemService.formataResponse(dialogos.get(i));
 
-            var loadDialogosDatasDto = new LoadDialogosDatasDto(id_dialogo, mensagem, loadPersonagemDto, loadRespostasDto);
+            var loadConsequencias = loadConsequenciasService.formataDto(dialogos.get(i));
+
+            var loadDialogosDatasDto = new LoadDialogosDatasDto(id_dialogo, mensagem, loadPersonagemDto, loadRespostasDto, loadConsequencias);
 
             finalResponse.add(loadDialogosDatasDto);
         }

@@ -1,13 +1,13 @@
 package br.com.etechoracio.deutschland_game.services;
 
+import br.com.etechoracio.deutschland_game.dtos.LoadConsequenciasDto;
 import br.com.etechoracio.deutschland_game.entities.Consequencia;
+import br.com.etechoracio.deutschland_game.entities.Dialogos;
 import br.com.etechoracio.deutschland_game.repositories.ConsequenciasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ConsequenciasService {
@@ -17,11 +17,14 @@ public class ConsequenciasService {
     public List<Consequencia> getAllConsequencias(){
         return consequenciasRepository.findAll();
     }
-    public List<Consequencia> getAllConsequenciasByDialogo(Long id) {
+    public List<Consequencia> getAllConsequenciasByDialogo(Dialogos dialogo, Integer escolha) {
 
-        return consequenciasRepository.findAll().stream().filter(consequencia -> {
-            return consequencia.getDialogos().getId().equals(id);
-        }).collect(Collectors.toList());
+//        return consequenciasRepository.findAll().stream().filter(consequencia -> {
+//            return consequencia.getDialogos().getId().equals(id);
+//        }).collect(Collectors.toList());
+
+        return consequenciasRepository.findAllByDialogosAndResposta(dialogo, escolha);
+
     }
 
 }

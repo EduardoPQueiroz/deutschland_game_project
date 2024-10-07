@@ -26,6 +26,8 @@ INSERT INTO Personagem (nome) VALUES ('Hjalmar Schacht'); -- 10
 
 	select * from Conquistas 
 
+	delete Conquistas
+
 	INSERT INTO Conquistas (atributo) VALUES ('Popularidade') -- 1
 	INSERT INTO Conquistas (atributo) VALUES ('Igreja') -- 2
 	INSERT INTO Conquistas (atributo) VALUES ('Diplomacia') -- 3
@@ -160,7 +162,7 @@ INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VAL
 
 SELECT * FROM Personagem 
 
-DBCC CHECKIDENT ('Conquistas', RESEED, 1); -- isso reseta o identity (autoincremento do id)
+DBCC CHECKIDENT ('Conquistas', RESEED, 0); -- isso reseta o identity (autoincremento do id)
 DBCC CHECKIDENT ('ConquistasUsuario', RESEED, 1)
 DBCC CHECKIDENT ('Consequencia', RESEED, 1)
 DBCC CHECKIDENT ('Dialogo', RESEED, 1)
@@ -168,3 +170,5 @@ DBCC CHECKIDENT ('Era', RESEED, 1)
 DBCC CHECKIDENT ('Personagem', RESEED, 1)
 DBCC CHECKIDENT ('RespostasTexto', RESEED, 1)
 DBCC CHECKIDENT ('Usuario', RESEED, 1)
+
+select * from Consequencia where dialogo_id = 1 and resposta = 1

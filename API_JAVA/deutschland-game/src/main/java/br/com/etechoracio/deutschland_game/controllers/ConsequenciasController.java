@@ -1,6 +1,7 @@
 package br.com.etechoracio.deutschland_game.controllers;
 
 import br.com.etechoracio.deutschland_game.entities.Consequencia;
+import br.com.etechoracio.deutschland_game.entities.Dialogos;
 import br.com.etechoracio.deutschland_game.services.ConsequenciasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,9 @@ public class ConsequenciasController {
         return ResponseEntity.status(HttpStatus.OK).body(consequenciasService.getAllConsequencias());
     }
 
-    @GetMapping(path = "/dialogo/{id}")
-    public ResponseEntity<List<Consequencia>> getAllConsequenciasByDialogo(@PathVariable("id") Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(consequenciasService.getAllConsequenciasByDialogo(id));
-    }
+//    @GetMapping(path = "/dialogo/{id}/{escolha}")
+//    public ResponseEntity<List<Consequencia>> getAllConsequenciasByDialogo(@PathVariable("id") Dialogos id, @PathVariable("escolha") Integer escolha){
+//        return ResponseEntity.status(HttpStatus.OK).body(consequenciasService.getAllConsequenciasByDialogo(id, escolha));
+//    }
 
 }

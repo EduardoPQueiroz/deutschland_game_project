@@ -27,12 +27,7 @@ CREATE TABLE Dialogo (
 
 CREATE TABLE Conquistas (
     id BIGINT IDENTITY PRIMARY KEY,
-<<<<<<< HEAD
     atributo VARCHAR(64) NOT NULL, 
-    valor DECIMAL(10,2) NOT NULL,  
-=======
-    atributo VARCHAR(64) NOT NULL
->>>>>>> f225e2ceb8ab4a5423fa1946dadececaad9c36c6
 );
 
 create table ConquistasUsuario(
