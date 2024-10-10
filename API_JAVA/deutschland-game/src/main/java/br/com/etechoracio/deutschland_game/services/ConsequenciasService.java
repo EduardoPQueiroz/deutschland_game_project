@@ -19,10 +19,6 @@ public class ConsequenciasService {
     }
     public List<Consequencia> getAllConsequenciasByDialogo(Dialogos dialogo, Integer escolha) {
 
-//        return consequenciasRepository.findAll().stream().filter(consequencia -> {
-//            return consequencia.getDialogos().getId().equals(id);
-//        }).collect(Collectors.toList());
-
         return consequenciasRepository.findAllByDialogosAndResposta(dialogo, escolha);
 
     }

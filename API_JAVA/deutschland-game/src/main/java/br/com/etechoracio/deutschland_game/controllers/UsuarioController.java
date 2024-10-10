@@ -22,8 +22,9 @@ public class UsuarioController {
     }
 
     @PostMapping (path = "cadastrar")
-    public ResponseEntity<Usuario> cadastrar(@RequestBody CadastroUsuarioDto model){
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.cadastrar(model));
+    public ResponseEntity<Void> cadastrar(@RequestBody CadastroUsuarioDto model){
+        usuarioService.cadastrar(model);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping(path = "deletar/id/{id}")

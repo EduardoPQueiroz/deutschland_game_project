@@ -1,3 +1,21 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+#visual studio
+.vs/
+*.user
+*.rsuser
+*.suo
+*.vcxproj.user
+*.pdb
+*.cache
+*.log
+*.obj
+*.exe
+*.dll
+
+#dependencias
+/packages/
+/node_modules/
+*.nupkg

@@ -6,25 +6,21 @@ import br.com.etechoracio.deutschland_game.exceptions.UserNameExceededCharLimitE
 import br.com.etechoracio.deutschland_game.exceptions.UserNameSpecialCharsException;
 import br.com.etechoracio.deutschland_game.exceptions.UserNotFoundByIdException;
 import br.com.etechoracio.deutschland_game.repositories.UsuarioRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.Option;
-import java.util.Optional;
 
 @Service
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final ConquistasUsuarioService conquistasUsuarioService;
 
-    @Autowired
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, ConquistasUsuarioService conquistasUsuarioService) {
         this.usuarioRepository = usuarioRepository;
+        this.conquistasUsuarioService = conquistasUsuarioService;
     }
 
-    public Usuario cadastrar(CadastroUsuarioDto model){
+    public void cadastrar(CadastroUsuarioDto model){
         var user = new Usuario();
         BeanUtils.copyProperties(model, user);
 
@@ -32,7 +28,8 @@ public class UsuarioService {
 
         if(user.isNameCharsValid()) throw new UserNameSpecialCharsException();
 
-        return usuarioRepository.save(user);
+        Usuario userInDB= usuarioRepository.save(user);
+        conquistasUsuarioService.createAllConquistasUsuarioWithUser(userInDB);
     }
 
     public void deletar(Long id){
