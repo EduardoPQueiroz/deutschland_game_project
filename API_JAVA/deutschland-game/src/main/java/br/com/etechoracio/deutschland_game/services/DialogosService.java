@@ -22,6 +22,7 @@ public class DialogosService {
     @Autowired
     private PersonagemSpriteService personagemSpriteService;
 
+
     public List<Dialogos> dialogosByEraID(Era idEra){
         return repository.findAllByEras(idEra);
     }

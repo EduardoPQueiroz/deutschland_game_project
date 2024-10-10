@@ -18,10 +18,11 @@ import java.util.List;
 @RestController
 public class DatasBeforeEraController {
 
+
     private final LoadDialogosDatasService dialogosDatasService;
+
     private final DialogosService dialogosService;
 
-    @Autowired
     public DatasBeforeEraController(LoadDialogosDatasService dialogosDatasService, DialogosService dialogosService) {
         this.dialogosDatasService = dialogosDatasService;
         this.dialogosService = dialogosService;
@@ -29,6 +30,7 @@ public class DatasBeforeEraController {
 
     @GetMapping("/era/{id}")
     public ResponseEntity<List<LoadDialogosDatasDto>> carregar(@PathVariable("id") Era id){
+
         var dialogos = dialogosService.dialogosByEraID(id);
         var dialogosSorteados = dialogosService.sortearDialogos(dialogos);
         return ResponseEntity.status(HttpStatus.OK).body(dialogosDatasService.formataResponse(dialogosSorteados));

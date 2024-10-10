@@ -18,7 +18,6 @@ public class LoadDialogosDatasService {
 
     private final LoadPersonagemService loadPersonagemService;
 
-    @Autowired
     public LoadDialogosDatasService(PersonagemSpriteService personagemSpriteService, LoadRespostasDialogosService loadRespostasDialogosService, RespostasTextoService respostasTextoService, LoadConsequenciasService loadConsequenciasService, LoadPersonagemService loadPersonagemService) {
         this.personagemSpriteService = personagemSpriteService;
         this.loadRespostasDialogosService = loadRespostasDialogosService;
