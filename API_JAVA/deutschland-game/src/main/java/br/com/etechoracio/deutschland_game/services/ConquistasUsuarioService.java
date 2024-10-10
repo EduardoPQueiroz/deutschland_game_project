@@ -28,7 +28,7 @@ public class ConquistasUsuarioService {
     public void updateMultipleConquistas(List<ConquistasUsuarioDto> conquistasUsuarioDtoList) {
         for (ConquistasUsuarioDto model : conquistasUsuarioDtoList) {
             Optional<ConquistasUsuario> optionalConquistasUsuario = conquistasUsuarioRepository
-                    .findByConquistaIdAndUsuarioId(model.conquistas().getId(), model.usuario().getId());
+                    .findByConquistaIdAndUsuarioId(model.id_conquista(), model.id_usuario());
             if (optionalConquistasUsuario.isEmpty()) {
                 throw new RuntimeException("Conquista ou Usuário não encontrado");
             }
