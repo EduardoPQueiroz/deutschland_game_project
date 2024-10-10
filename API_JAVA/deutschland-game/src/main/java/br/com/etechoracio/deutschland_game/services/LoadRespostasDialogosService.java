@@ -3,6 +3,7 @@ package br.com.etechoracio.deutschland_game.services;
 import br.com.etechoracio.deutschland_game.dtos.LoadRespostasDialogosDto;
 import br.com.etechoracio.deutschland_game.entities.Dialogos;
 import br.com.etechoracio.deutschland_game.entities.RespostasTexto;
+import br.com.etechoracio.deutschland_game.repositories.RespostasTextoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,20 +11,19 @@ import java.util.List;
 
 @Service
 public class LoadRespostasDialogosService {
-
-    private final RespostasTextoService respostasTextoService;
+    private final RespostasTextoRepository respostasTextoRepository;
 
     @Autowired
-    public LoadRespostasDialogosService(RespostasTextoService respostasTextoService) {
-        this.respostasTextoService = respostasTextoService;
+    public LoadRespostasDialogosService(RespostasTextoRepository respostasTextoRepository) {
+        this.respostasTextoRepository = respostasTextoRepository;
     }
 
     public LoadRespostasDialogosDto formataDto(Dialogos dialogo){
 
-        List<RespostasTexto> respostas = respostasTextoService.getRespostasByDialogos(dialogo);
+        var aceito = respostasTextoRepository.findByDialogosAndEscolha(dialogo, 1).get().getConteudo();
+        var recusado = respostasTextoRepository.findByDialogosAndEscolha(dialogo, 0).get().getConteudo();
 
-        if(respostas.get(0).getEscolha() == 1) return new LoadRespostasDialogosDto(respostas.get(0).getConteudo(), respostas.get(1).getConteudo());
-        return new LoadRespostasDialogosDto(respostas.get(1).getConteudo(), respostas.get(0).getConteudo());
+        return new LoadRespostasDialogosDto(aceito, recusado);
 
     }
 

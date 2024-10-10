@@ -18,7 +18,4 @@ public class RespostasTextoService {
         this.respostasTextoRepository = respostasTextoRepository;
     }
 
-    public List<RespostasTexto> getRespostasByDialogos(Dialogos dialogos){
-        return respostasTextoRepository.findAllByDialogos(dialogos);
-    }
 }

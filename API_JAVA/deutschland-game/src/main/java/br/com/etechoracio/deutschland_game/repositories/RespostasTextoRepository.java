@@ -9,6 +9,6 @@ import java.util.Optional;
 
 public interface RespostasTextoRepository extends JpaRepository<RespostasTexto, Long> {
 
-    List<RespostasTexto> findAllByDialogos(Dialogos dialogos);
+    Optional<RespostasTexto> findByDialogosAndEscolha(Dialogos dialogos, int escolha);
 
 }
