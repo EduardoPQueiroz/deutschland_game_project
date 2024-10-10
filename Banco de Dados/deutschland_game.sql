@@ -32,12 +32,12 @@ CREATE TABLE Conquistas (
 
 create table ConquistasUsuario(
 
-	id bigint not null primary key identity,
-	valor int not null,
-	id_conquistas bigint not null,
-	id_usuario bigint not null, 
-	foreign key (id_conquistas) references Conquistas(id),
-	foreign key (id_usuario) references Usuario(id)
+    id bigint IDENTITY PRIMARY KEY,
+    valor int NOT NULL,
+    id_conquistas bigint NOT NULL,
+    id_usuario bigint NOT NULL, 
+    FOREIGN KEY (id_conquistas) REFERENCES Conquistas(id),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 	
 )
 
