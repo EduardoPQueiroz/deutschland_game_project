@@ -18,9 +18,9 @@ public class LoadPersonagemService {
     public LoadPersonagemDto formataResponse(Dialogos dialogo){
         var personagemNome = dialogo.getPersonagens().getNome();
         var personagemID = dialogo.getPersonagens().getId();
-//        var personagemSprite = personagemSpriteService.getPersonagemById(personagemID).getspritePersonagem();
+        var personagemSprite = personagemSpriteService.getPersonagemById(personagemID).getspritePersonagem();
 
-        return new LoadPersonagemDto(personagemNome, "img");
+        return new LoadPersonagemDto(personagemNome, personagemSprite);
     }
 
 }
