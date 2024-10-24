@@ -39,7 +39,7 @@ public class LoadDialogosDatasService {
 
             var loadConsequencias = loadConsequenciasService.formataDto(dialogos.get(i));
 
-            var loadDialogosDatasDto = new LoadDialogosDatasDto(id_dialogo, mensagem, loadPersonagemDto, loadRespostasDto, loadConsequencias);
+            var loadDialogosDatasDto = new LoadDialogosDatasDto(id_dialogo, mensagem, loadRespostasDto, loadConsequencias, loadPersonagemDto);
 
             finalResponse.add(loadDialogosDatasDto);
         }

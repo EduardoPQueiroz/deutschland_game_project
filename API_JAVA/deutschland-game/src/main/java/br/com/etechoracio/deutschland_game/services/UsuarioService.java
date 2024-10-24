@@ -20,7 +20,7 @@ public class UsuarioService {
         this.conquistasUsuarioService = conquistasUsuarioService;
     }
 
-    public void cadastrar(CadastroUsuarioDto model){
+    public Long cadastrar(CadastroUsuarioDto model){
         var user = new Usuario();
         BeanUtils.copyProperties(model, user);
 
@@ -30,6 +30,8 @@ public class UsuarioService {
 
         Usuario userInDB= usuarioRepository.save(user);
         conquistasUsuarioService.createAllConquistasUsuarioWithUser(userInDB);
+
+        return user.getId();
     }
 
     public void deletar(Long id){
