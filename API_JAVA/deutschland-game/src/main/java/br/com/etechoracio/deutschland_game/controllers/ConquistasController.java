@@ -2,6 +2,8 @@ package br.com.etechoracio.deutschland_game.controllers;
 
 import br.com.etechoracio.deutschland_game.dtos.ConquistasUsuarioDto;
 import br.com.etechoracio.deutschland_game.entities.Conquistas;
+import br.com.etechoracio.deutschland_game.entities.ConquistasUsuario;
+import br.com.etechoracio.deutschland_game.entities.Usuario;
 import br.com.etechoracio.deutschland_game.exceptions.ConquistaIdNotFoundException;
 import br.com.etechoracio.deutschland_game.services.ConquistasService;
 import br.com.etechoracio.deutschland_game.services.ConquistasUsuarioService;
@@ -27,18 +29,27 @@ public class ConquistasController {
     public ResponseEntity<Conquistas> getConquistaById(@PathVariable Long id) throws ConquistaIdNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(conquistasService.getConquistaById(id));
     }
-    //deve ser como INSERT INTO ConquistasUsuario (valor, id_conquistas, id_usuario) VALUES (10, 1, 1);
     //ou um json como:
-    //    "conquistas": {
-    //      "id": 1
+    //    [
+    //    {
+    //        "id_conquista": 2,
+    //       "valor_acresc": 50,
+    //         "id_usuario": 4
     //    },
-    //    "valor_acresc": 10,
-    //    "usuario": {
-    //      "id": 1
+    //    {
+    //        "id_conquista": 3,
+    //       "valor_acresc": 50,
+    //         "id_usuario": 4
     //    }
+    //]
     @PutMapping("/update")
     public ResponseEntity<Void> updateConquistas(@RequestBody List<ConquistasUsuarioDto> conquistasUsuarioDtoList){
         conquistasUsuarioService.updateMultipleConquistas(conquistasUsuarioDtoList);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/all/user/id/{id}")
+    public ResponseEntity<List<ConquistasUsuarioDto>> findAllByUsuario(@PathVariable("id") Usuario usuario){
+        return ResponseEntity.status(HttpStatus.OK).body(conquistasUsuarioService.getConquistasByUserID(usuario));
     }
 }

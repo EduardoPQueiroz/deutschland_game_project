@@ -6,6 +6,7 @@ import br.com.etechoracio.deutschland_game.entities.Usuario;
 import br.com.etechoracio.deutschland_game.exceptions.UserNameExceededCharLimitException;
 import br.com.etechoracio.deutschland_game.exceptions.UserNameSpecialCharsException;
 import br.com.etechoracio.deutschland_game.exceptions.UserNotFoundByIdException;
+import br.com.etechoracio.deutschland_game.repositories.ConquistasUsuarioRepository;
 import br.com.etechoracio.deutschland_game.repositories.UsuarioRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,12 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final ConquistasUsuarioService conquistasUsuarioService;
 
-    public UsuarioService(UsuarioRepository usuarioRepository, ConquistasUsuarioService conquistasUsuarioService) {
+    private final ConquistasUsuarioRepository conquistasUsuarioRepository;
+
+    public UsuarioService(UsuarioRepository usuarioRepository, ConquistasUsuarioService conquistasUsuarioService, ConquistasUsuarioRepository conquistasUsuarioRepository) {
         this.usuarioRepository = usuarioRepository;
         this.conquistasUsuarioService = conquistasUsuarioService;
+        this.conquistasUsuarioRepository = conquistasUsuarioRepository;
     }
 
     public UsuarioIdDto cadastrar(CadastroUsuarioDto model){
@@ -38,7 +42,8 @@ public class UsuarioService {
 
     public void deletar(Long id){
         var user = usuarioRepository.findById(id).orElseThrow(UserNotFoundByIdException::new);
-
+        var conquistasUsuario = conquistasUsuarioRepository.findByUsuario(user);
+        conquistasUsuarioRepository.deleteAll(conquistasUsuario);
         usuarioRepository.delete(user);
     }
 

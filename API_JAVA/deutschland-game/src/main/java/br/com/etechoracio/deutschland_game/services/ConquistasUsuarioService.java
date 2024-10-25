@@ -55,4 +55,20 @@ public class ConquistasUsuarioService {
         conquistasUsuarioRepository.saveAll(conquistasUsuarios);
 
     }
+
+    public List<ConquistasUsuarioDto> getConquistasByUserID(Usuario usuario){
+        var conquistasUsuario = conquistasUsuarioRepository.findByUsuario(usuario);
+        var conquistasUsuarioDto = new ArrayList<ConquistasUsuarioDto>();
+
+        for (ConquistasUsuario conquista : conquistasUsuario){
+            var idConquista = conquista.getConquista().getId();
+            var valor = conquista.getValor();
+            var idUsuario = conquista.getUsuario().getId();
+
+            conquistasUsuarioDto.add(new ConquistasUsuarioDto(idConquista, valor, idUsuario));
+        }
+
+        return conquistasUsuarioDto;
+
+    }
 }
