@@ -1,6 +1,7 @@
 package br.com.etechoracio.deutschland_game.services;
 
 import br.com.etechoracio.deutschland_game.dtos.CadastroUsuarioDto;
+import br.com.etechoracio.deutschland_game.dtos.UsuarioIdDto;
 import br.com.etechoracio.deutschland_game.entities.Usuario;
 import br.com.etechoracio.deutschland_game.exceptions.UserNameExceededCharLimitException;
 import br.com.etechoracio.deutschland_game.exceptions.UserNameSpecialCharsException;
@@ -20,7 +21,7 @@ public class UsuarioService {
         this.conquistasUsuarioService = conquistasUsuarioService;
     }
 
-    public Long cadastrar(CadastroUsuarioDto model){
+    public UsuarioIdDto cadastrar(CadastroUsuarioDto model){
         var user = new Usuario();
         BeanUtils.copyProperties(model, user);
 
@@ -31,7 +32,8 @@ public class UsuarioService {
         Usuario userInDB= usuarioRepository.save(user);
         conquistasUsuarioService.createAllConquistasUsuarioWithUser(userInDB);
 
-        return user.getId();
+        return new UsuarioIdDto(user.getId(), user.getNome());
+
     }
 
     public void deletar(Long id){

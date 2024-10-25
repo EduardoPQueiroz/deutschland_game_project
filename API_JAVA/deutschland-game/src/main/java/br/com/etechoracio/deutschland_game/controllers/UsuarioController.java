@@ -1,6 +1,7 @@
 package br.com.etechoracio.deutschland_game.controllers;
 
 import br.com.etechoracio.deutschland_game.dtos.CadastroUsuarioDto;
+import br.com.etechoracio.deutschland_game.dtos.UsuarioIdDto;
 import br.com.etechoracio.deutschland_game.entities.Usuario;
 import br.com.etechoracio.deutschland_game.services.UsuarioService;
 import org.apache.coyote.Response;
@@ -22,8 +23,8 @@ public class UsuarioController {
     }
 
     @PostMapping (path = "cadastrar")
-    public ResponseEntity<Long> cadastrar(@RequestBody CadastroUsuarioDto model){
-        Long id = usuarioService.cadastrar(model);
+    public ResponseEntity<UsuarioIdDto> cadastrar(@RequestBody CadastroUsuarioDto model){
+        var id = usuarioService.cadastrar(model);
         return ResponseEntity.ok(id);
     }
 
