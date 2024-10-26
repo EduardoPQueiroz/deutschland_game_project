@@ -13,8 +13,14 @@ CREATE TABLE Personagem (
 
 CREATE TABLE Era (
     id BIGINT IDENTITY PRIMARY KEY,
-    nome VARCHAR(40) NOT NULL UNIQUE
+    nome VARCHAR(40) NOT NULL UNIQUE,
+	periodo varchar(20) not null
 );
+
+-- alter table Era add periodo varchar(20) null
+-- update Era set periodo = ''
+-- ALTER TABLE Era  ALTER COLUMN periodo VARCHAR(20) NOT NULL;
+
 
 CREATE TABLE Dialogo (
     id BIGINT IDENTITY PRIMARY KEY,
