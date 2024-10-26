@@ -31,7 +31,7 @@ public class EraService {
         var era = findEraById(id);
         var eraSprite = eraSpritesService.getEraById(id);
 
-        return new LoadEraDataDto(era.getId(), era.getNome(), eraSprite.getSpriteEra());
+        return new LoadEraDataDto(era.getId(), era.getNome(), era.getPeriodo(), eraSprite.getSpriteEra());
 
     }
 
