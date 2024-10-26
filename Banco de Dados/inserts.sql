@@ -43,6 +43,15 @@ INSERT INTO Era (nome) VALUES ('Sacro Império (962 - 1806)')
 INSERT INTO Era (nome) VALUES ('Confederação do Reno (1806 - 1815)')
 INSERT INTO Era (nome) VALUES ('Confederação Alemã (1815 - 1866)')
 
+update Era set nome = 'Sacro Império', periodo = '(962 - 1806)'
+where nome = 'Sacro Império (962 - 1806)'
+
+update Era set nome = 'Confederação do Reno', periodo = '(1806 - 1815)'
+where nome = 'Confederação do Reno (1806 - 1815)'
+
+update Era set nome = 'Confederação Alemã', periodo = '(1815 - 1866)'
+where nome = 'Confederação Alemã (1815 - 1866)'
+
 -- DIALOGOS, RESPOSTAS E CONSEQUENCIAS
 
 select * from Dialogo
