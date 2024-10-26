@@ -18,5 +18,8 @@ public class Era {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "periodo")
+    private String periodo;
+
 }
 
