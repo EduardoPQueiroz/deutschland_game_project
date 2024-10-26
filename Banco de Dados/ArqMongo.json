@@ -1,0 +1,27 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "99ea3936-32e3-4c05-aceb-63df99998e29",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1729956805465"
+        }
+      },
+      "favorite": {
+        "name": "Alemanha",
+        "color": "color4"
+      },
+      "savedConnectionType": "recent",
+      "connectionOptions": {
+        "connectionString": "mongodb://localhost:27017/Alemanha",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjowLCJzdGF0ZSI6W119"
+        }
+      }
+    }
+  ]
+}
