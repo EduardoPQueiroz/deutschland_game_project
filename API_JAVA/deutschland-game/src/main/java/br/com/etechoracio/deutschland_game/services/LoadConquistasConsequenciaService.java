@@ -20,7 +20,7 @@ public class LoadConquistasConsequenciaService {
             var nome_conquistas = consequencia.getConquistas().getAtributo();
             var valor_acrescentado = consequencia.getValorMudanca();
 
-            var dtoFilled = new LoadConsequenciasConquistasDto(id_conquistas, nome_conquistas, valor_acrescentado);
+            var dtoFilled = new LoadConsequenciasConquistasDto(id_conquistas, nome_conquistas, valor_acrescentado.intValue());
 
             loadConsequenciasConquistasDtoList.add(dtoFilled);
 

@@ -1,6 +1,7 @@
 package br.com.etechoracio.deutschland_game.services;
 
 import br.com.etechoracio.deutschland_game.dtos.ConquistasUsuarioDto;
+import br.com.etechoracio.deutschland_game.dtos.LoadConsequenciasConquistasDto;
 import br.com.etechoracio.deutschland_game.entities.Conquistas;
 import br.com.etechoracio.deutschland_game.entities.ConquistasUsuario;
 import br.com.etechoracio.deutschland_game.entities.Usuario;
@@ -25,15 +26,15 @@ public class ConquistasUsuarioService {
         this.conquistasRepository = conquistasRepository;
     }
 
-    public void updateMultipleConquistas(List<ConquistasUsuarioDto> conquistasUsuarioDtoList) {
-        for (ConquistasUsuarioDto model : conquistasUsuarioDtoList) {
+    public void updateMultipleConquistas(List<LoadConsequenciasConquistasDto> conquistasUsuarioDtoList, Long userID) {
+        for (LoadConsequenciasConquistasDto model : conquistasUsuarioDtoList) {
             Optional<ConquistasUsuario> optionalConquistasUsuario = conquistasUsuarioRepository
-                    .findByConquistaIdAndUsuarioId(model.id_conquista(), model.id_usuario());
+                    .findByConquistaIdAndUsuarioId(model.id_conquistas(), userID);
             if (optionalConquistasUsuario.isEmpty()) {
                 throw new RuntimeException("Conquista ou Usuário não encontrado");
             }
             ConquistasUsuario conquistasUsuario = optionalConquistasUsuario.get();
-            conquistasUsuario.setValor(conquistasUsuario.getValor() + model.valor_acresc());
+            conquistasUsuario.setValor((int) (conquistasUsuario.getValor() + model.valor_acrescentado()));
             conquistasUsuarioRepository.save(conquistasUsuario);
         }
     }
@@ -56,16 +57,16 @@ public class ConquistasUsuarioService {
 
     }
 
-    public List<ConquistasUsuarioDto> getConquistasByUserID(Usuario usuario){
+    public List<LoadConsequenciasConquistasDto> getConquistasByUserID(Usuario usuario){
         var conquistasUsuario = conquistasUsuarioRepository.findByUsuario(usuario);
-        var conquistasUsuarioDto = new ArrayList<ConquistasUsuarioDto>();
+        var conquistasUsuarioDto = new ArrayList<LoadConsequenciasConquistasDto>();
 
         for (ConquistasUsuario conquista : conquistasUsuario){
             var idConquista = conquista.getConquista().getId();
             var valor = conquista.getValor();
-            var idUsuario = conquista.getUsuario().getId();
+            var nome = conquista.getConquista().getAtributo();
 
-            conquistasUsuarioDto.add(new ConquistasUsuarioDto(idConquista, valor, idUsuario));
+            conquistasUsuarioDto.add(new LoadConsequenciasConquistasDto(idConquista, nome, valor));
         }
 
         return conquistasUsuarioDto;

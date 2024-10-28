@@ -1,6 +1,7 @@
 package br.com.etechoracio.deutschland_game.controllers;
 
 import br.com.etechoracio.deutschland_game.dtos.ConquistasUsuarioDto;
+import br.com.etechoracio.deutschland_game.dtos.LoadConsequenciasConquistasDto;
 import br.com.etechoracio.deutschland_game.entities.Conquistas;
 import br.com.etechoracio.deutschland_game.entities.ConquistasUsuario;
 import br.com.etechoracio.deutschland_game.entities.Usuario;
@@ -29,27 +30,27 @@ public class ConquistasController {
     public ResponseEntity<Conquistas> getConquistaById(@PathVariable Long id) throws ConquistaIdNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(conquistasService.getConquistaById(id));
     }
-    //ou um json como:
-    //    [
-    //    {
-    //        "id_conquista": 2,
-    //       "valor_acresc": 50,
-    //         "id_usuario": 4
-    //    },
-    //    {
-    //        "id_conquista": 3,
-    //       "valor_acresc": 50,
-    //         "id_usuario": 4
-    //    }
-    //]
-    @PutMapping("/update")
-    public ResponseEntity<Void> updateConquistas(@RequestBody List<ConquistasUsuarioDto> conquistasUsuarioDtoList){
-        conquistasUsuarioService.updateMultipleConquistas(conquistasUsuarioDtoList);
+
+//    [
+//    {
+//        "id_conquistas": 2,
+//            "nome_conquistas": "Igreja",
+//            "valor_acrescentado": 150
+//    },
+//    {
+//        "id_conquistas": 3,
+//            "nome_conquistas": "Diplomacia",
+//            "valor_acrescentado": 150
+//    }
+//]
+    @PutMapping("/update/userID/{id}")
+    public ResponseEntity<Void> updateConquistas(@RequestBody List<LoadConsequenciasConquistasDto> conquistasUsuarioDtoList, @PathVariable("id") Long userID){
+        conquistasUsuarioService.updateMultipleConquistas(conquistasUsuarioDtoList, userID);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @GetMapping("/all/user/id/{id}")
-    public ResponseEntity<List<ConquistasUsuarioDto>> findAllByUsuario(@PathVariable("id") Usuario usuario){
+    public ResponseEntity<List<LoadConsequenciasConquistasDto>> findAllByUsuario(@PathVariable("id") Usuario usuario){
         return ResponseEntity.status(HttpStatus.OK).body(conquistasUsuarioService.getConquistasByUserID(usuario));
     }
 }
