@@ -17,9 +17,9 @@ CREATE TABLE Era (
 	periodo varchar(20) not null
 );
 
--- alter table Era add periodo varchar(20) null
--- update Era set periodo = ''
--- ALTER TABLE Era  ALTER COLUMN periodo VARCHAR(20) NOT NULL;
+alter table Era add periodo varchar(20) null
+update Era set periodo = ''
+ALTER TABLE Era  ALTER COLUMN periodo VARCHAR(20) NOT NULL;
 
 
 CREATE TABLE Dialogo (
