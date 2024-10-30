@@ -64,3 +64,4 @@ CREATE TABLE RespostasTexto (
     id_dialogo BIGINT NOT NULL,
     FOREIGN KEY (id_dialogo) REFERENCES Dialogo(id)
 );
+
