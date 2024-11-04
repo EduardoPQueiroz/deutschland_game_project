@@ -31,7 +31,7 @@ public class DialogosService {
         Collections.shuffle(dialogos);
         Collections.shuffle(dialogos);
 
-        return dialogos.subList(0, 4);
+        return dialogos.subList(0, 6);
     }
 
 }
