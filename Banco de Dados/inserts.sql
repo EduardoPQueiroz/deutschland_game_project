@@ -39,6 +39,8 @@ INSERT INTO Personagem (nome) VALUES ('Hjalmar Schacht'); -- 10
 
 select * from Era
 
+delete from Era
+
 INSERT INTO Era (nome, periodo) VALUES ('Sacro Império', '(962 - 1806)')
 INSERT INTO Era (nome, periodo) VALUES ('Confederação do Reno', '(1806 - 1815)')
 INSERT INTO Era (nome, periodo) VALUES ('Confederação Alemã', '(1815 - 1866)')
@@ -58,6 +60,8 @@ INSERT INTO Era (nome, periodo) VALUES ('Segunda Guerra Mundial', '(1939 - 1945)
 
 -- DIALOGOS, RESPOSTAS E CONSEQUENCIAS
 
+delete from Dialogo
+
 select * from Dialogo
 select * from RespostasTexto
 select * from Consequencia
@@ -65,129 +69,128 @@ select * from Consequencia
 -- 1
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('Os Normandos estão se expandindo demais e conquistando meus territórios.
-Preciso de sua ajuda contra seu avanço no sul da Itália.', 3, 1) 
+Preciso de sua ajuda contra seu avanço no sul da Itália.', 3, 1);
 
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('O desejo de vossa santidade é meu desejo também.', 1, 1)
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Sinto muito, porém não posso te ajudar.', 0, 1)
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('O desejo de vossa santidade é meu desejo também.', 1, 1);
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Sinto muito, porém não posso te ajudar.', 0, 1);
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(1, 2, 1, 50) -- igreja
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(1, 5, 1, 25) -- exército
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(1, 2, 1, 50); -- igreja
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(1, 5, 1, 25); -- exército
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(1, 2, 0, -50) -- igreja
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(1, 2, 0, -50); -- igreja
 
 -- 2
-
+BEGIN
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('A influência do movimento protestante está aumentando. Precisamos de sua
-garantia de submissão à Igreja Católica e que você suprima esses rebeldes.', 4, 1)
+garantia de submissão à Igreja Católica e que você suprima esses rebeldes.', 4, 1);
 
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Esses hereges não sairão impunes!', 1, 2)
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Não posso te garantir nada por agora.', 0, 2)
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Esses hereges não sairão impunes!', 1, 2);
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Não posso te garantir nada por agora.', 0, 2);
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(2, 2, 1, 50) -- igreja
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(2, 5, 1, 25) -- exército
-
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(2, 2, 0, -50) -- igreja
-
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(2, 2, 1, 50); -- igreja
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(2, 5, 1, 25); -- exército
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(2, 2, 0, -50); -- igreja
+end;
 -- 3
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('Senhor, os húngaros estão mais fortes do que nunca. Precisamos de mais
-recursos para defender nossas fronteiras e garantir a segurança do império', 7, 1)
+recursos para defender nossas fronteiras e garantir a segurança do império', 7, 1);
 
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Segurança acima de tudo.', 1, 3)
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Nossos recursos serão bem gastos em outros locais', 0, 3)
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Segurança acima de tudo.', 1, 3);
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Nossos recursos serão bem gastos em outros locais', 0, 3);
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(3, 5, 1, 50) -- exército
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(3, 4, 1, -75) -- economia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(3, 5, 1, 50); -- exército
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(3, 4, 1, -75); -- economia
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(3, 5, 0, -25) -- exército
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(3, 4, 0, 20) -- economia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(3, 5, 0, -25); -- exército
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(3, 4, 0, 20); -- economia
 
 -- 4
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('Os príncipes protestantes estão se rebelando contra vossa alteza. Queremos
-autorização para enfrentar os rebeldes e garantir a estabilidade do império.', 8, 1)
+autorização para enfrentar os rebeldes e garantir a estabilidade do império.', 8, 1);
 
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Ataque-os imediatamente!', 1, 4)
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Deixe a situação se resolver por conta própria.', 0, 4)
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Ataque-os imediatamente!', 1, 4);
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Deixe a situação se resolver por conta própria.', 0, 4);
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(4, 2, 1, 25) -- igreja
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(4, 5, 1, 30) -- exército
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(4, 2, 1, 25); -- igreja
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(4, 5, 1, 30); -- exército
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(4, 2, 0, -25) -- igreja
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(4, 5, 0, -30) -- exército
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(4, 2, 0, -25); -- igreja
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(4, 5, 0, -30); -- exército
 
 -- 5
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('Senhor, os impostos imperiais são sufocantes e estão
-causando fome e miséria nas vilas. Precisamos de uma redução nos impostos.', 5, 1)
+causando fome e miséria nas vilas. Precisamos de uma redução nos impostos.', 5, 1);
 
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('O bem-estar do povo é o que mais importa.', 1, 5)
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('O bem-estar do povo é o que mais importa.', 1, 5);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Você tem sorte de eu não os aumentar mais ainda depois de um pedido absurdo
-como esse!', 0, 5)
+como esse!', 0, 5);
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(5, 1, 1, 75) -- povo
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(5, 4, 1, -75) -- economia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(5, 1, 1, 75); -- povo
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(5, 4, 1, -75); -- economia
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(5, 1, 0, -50) -- povo
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(5, 4, 0, 55) -- economia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(5, 1, 0, -50); -- povo
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(5, 4, 0, 55); -- economia
 
 -- 6 
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('Os senhores feudais praticam todo tipo de abuso contra os
 camponeses e nada acontece! Precisamos de justiça nos campos e uma reforma no
-sistema feudal.', 6, 1)
+sistema feudal.', 6, 1);
 
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('O sistema feudal ja está ultrapassado. Vamos fazer algo sobre isso.', 1, 6)
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Os senhores feudais garantem a estabilidade do império. Nada mudará.', 0, 6)
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('O sistema feudal ja está ultrapassado. Vamos fazer algo sobre isso.', 1, 6);
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Os senhores feudais garantem a estabilidade do império. Nada mudará.', 0, 6);
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(6, 1, 1, 50) -- povo
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(6, 1, 1, 50); -- povo
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(6, 1, 0, -30) -- povo
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(6, 1, 0, -30); -- povo
 
 -- 7
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('O Reino da França propõe uma aliança contra os reinos anglo-
-saxões.', 1, 1)
+saxões.', 1, 1);
 
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Uma aliança seria benéfica para ambos os lados.', 1, 7)
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Não vou envolver meu império em uma rivalidade francesa.', 0, 7)
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Uma aliança seria benéfica para ambos os lados.', 1, 7);
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Não vou envolver meu império em uma rivalidade francesa.', 0, 7);
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(7, 3, 1, 75) -- diplomacia
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(7, 5, 1, 75) -- exército
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(7, 3, 1, 75); -- diplomacia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(7, 5, 1, 75); -- exército
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(7, 3, 0, -50) -- diplomacia
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(7, 5, 0, -70) -- exército
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(7, 3, 0, -50); -- diplomacia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(7, 5, 0, -70); -- exército
 
 -- 8
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('Como representante dos nobres do norte da Itália, gostaria de pedir
 garantia de nossa autonomia e defesa por parte do Sacro Império em troca de nossa
-vassalagem.', 2, 1)
+vassalagem.', 2, 1);
 
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Já estava na hora de expandir nossas posses para a península itálica.', 1, 8)
-INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Não precisamos de suas terras e nem de sua lealdade.', 0, 8)
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Já estava na hora de expandir nossas posses para a península itálica.', 1, 8);
+INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) VALUES('Não precisamos de suas terras e nem de sua lealdade.', 0, 8);
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 3, 1, 50) -- diplomacia
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 4, 1, 120) -- economia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 3, 1, 50); -- diplomacia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 4, 1, 120); -- economia
 
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 3, 0, -50) -- diplomacia
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 4, 0, -70) -- economia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 3, 0, -50); -- diplomacia
+INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES(8, 4, 0, -70); -- economia
 
 -- 9
 
 insert into Dialogo (mensagem, id_personagem, id_era) values ('Senhor, as tarifas das rotas comerciais do Mar Báltico impostas pelos suecos são muito pesadas. 
-Precisamos que nos ajude com a redução delas.', 9, 1)
+Precisamos que nos ajude com a redução delas.', 9, 1);
 
-insert into RespostasTexto (conteudo, escolha, id_dialogo) values('Nossos comerciantes, nossas tarifas', 1, 9)
-insert into RespostasTexto (conteudo, escolha, id_dialogo) values('Os suecos têm direito de tarifar barcos no Mar Báltico', 0, 9)
+insert into RespostasTexto (conteudo, escolha, id_dialogo) values('Nossos comerciantes, nossas tarifas', 1, 9);
+insert into RespostasTexto (conteudo, escolha, id_dialogo) values('Os suecos têm direito de tarifar barcos no Mar Báltico', 0, 9);
 
-insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 3, 1, -60) -- diplomacia
-insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 4, 1, 40) -- economia
-insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 1, 1, 30) -- povo
+insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 3, 1, -60); -- diplomacia
+insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 4, 1, 40); -- economia
+insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 1, 1, 30); -- povo
 
-insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 3, 0, 30) -- diplomacia
-insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 4, 0, -40) -- economia
-insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 1, 0, -40) -- povo
+insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 3, 0, 30); -- diplomacia
+insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 4, 0, -40); -- economia
+insert into Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) values(9, 1, 0, -40); -- povo
 
 -- 10
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) VALUES ('Grande parte dos impostos são direcionados para obras religiosas. Precisamos de menos igrejas e mais infraestrutura. 
@@ -563,530 +566,523 @@ INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VAL
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES (36, 2, 0, -30); -- igreja
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) VALUES (36, 5, 0, 30); -- exército
 
--- 37
+-- 37 -- PAROU AQUI 
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('Estamos dispostos a financiar a mobilização das tropas, mas a unificação trará instabilidade econômica. Você está disposto a correr esse risco?', 10, 4)
+VALUES ('Estamos dispostos a financiar a mobilização das tropas, mas a unificação trará instabilidade econômica. Você está disposto a correr esse risco?', 10, 4);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Sim, precisamos de seu apoio!', 1, 37)
+VALUES ('Sim, precisamos de seu apoio!', 1, 37);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('A economia deve ser nossa prioridade.', 0, 37)
+VALUES ('A economia deve ser nossa prioridade.', 0, 37);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (37, 4, 1, 50) -- economia
+VALUES (37, 4, 1, 50); -- economia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (37, 1, 1, -25) -- povo
+VALUES (37, 1, 1, -25); -- povo
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (37, 4, 0, -50) -- economia
+VALUES (37, 4, 0, -50); -- economia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (37, 1, 0, 25) -- povo
+VALUES (37, 1, 0, 25); -- povo
 
 -- 38
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A instabilidade política está afetando meus negócios. Precisamos garantir que a unificação não traga mais conflitos.', 9, 4)
+VALUES ('A instabilidade política está afetando meus negócios. Precisamos garantir que a unificação não traga mais conflitos.', 9, 4);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Priorize a unificação!', 1, 38)
+VALUES ('Priorize a unificação!', 1, 38);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos buscar acordos comerciais em vez de guerra.', 0, 38)
+VALUES ('Vamos buscar acordos comerciais em vez de guerra.', 0, 38);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (38, 5, 1, 50) -- exército
+VALUES (38, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (38, 4, 1, -25) -- economia
+VALUES (38, 4, 1, -25); -- economia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (38, 1, 1, -25) -- povo
+VALUES (38, 1, 1, -25); -- povo
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (38, 3, 0, 50) -- diplomacia
+VALUES (38, 3, 0, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (38, 5, 0, -25) -- exército
+VALUES (38, 5, 0, -25); -- exército
 
 -- 39
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('Os trabalhadores estão preocupados com as promessas de unificação. Se não houver melhorias em nossas condições, a revolta pode ser iminente.', 6, 4)
+VALUES ('Os trabalhadores estão preocupados com as promessas de unificação. Se não houver melhorias em nossas condições, a revolta pode ser iminente.', 6, 4);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Melhoremos as condições dos trabalhadores para garantir apoio!', 1, 39)
+VALUES ('Melhoremos as condições dos trabalhadores para garantir apoio!', 1, 39);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('A unificação é mais importante agora!', 0, 39)
+VALUES ('A unificação é mais importante agora!', 0, 39);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (39, 1, 1, 50) -- povo
+VALUES (39, 1, 1, 50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (39, 4, 1, -25) -- economia
+VALUES (39, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (39, 1, 0, -50) -- povo
+VALUES (39, 1, 0, -50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (39, 5, 0, 25) -- exército
+VALUES (39, 5, 0, 25); -- exército
 
 -- 40
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('O povo quer um futuro melhor, mas a guerra não é a solução. Se não cuidarmos das necessidades básicas, a insatisfação crescerá.', 5, 4)
+VALUES ('O povo quer um futuro melhor, mas a guerra não é a solução. Se não cuidarmos das necessidades básicas, a insatisfação crescerá.', 5, 4);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos focar em necessidades civis!', 1, 40)
+VALUES ('Vamos focar em necessidades civis!', 1, 40);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('A guerra é a única maneira de garantir a unificação!', 0, 40)
+VALUES ('A guerra é a única maneira de garantir a unificação!', 0, 40);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (40, 1, 1, 50) -- povo
+VALUES (40, 1, 1, 50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (40, 5, 1, -25) -- exército
+VALUES (40, 5, 1, -25); -- exército
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (40, 5, 0, 50) -- exército
+VALUES (40, 5, 0, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (40, 1, 0, -25) -- povo
+VALUES (40, 1, 0, -25); -- povo
 
 -- 41
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('As tropas estão prontas para uma nova ofensiva. Devemos atacar agora, mas perderemos muitos homens e recursos. O que decide?', 8, 5)
+VALUES ('As tropas estão prontas para uma nova ofensiva. Devemos atacar agora, mas perderemos muitos homens e recursos. O que decide?', 8, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Atacar agora! A vitória é nosso único caminho!', 1, 41)
+VALUES ('Atacar agora! A vitória é nosso único caminho!', 1, 41);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Mantenha as tropas em posição defensiva.', 0, 41)
+VALUES ('Mantenha as tropas em posição defensiva.', 0, 41);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (41, 5, 1, 50) -- exército
+VALUES (41, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (41, 1, 1, -25) -- povo
+VALUES (41, 1, 1, -25); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (41, 4, 1, -25) -- economia
+VALUES (41, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (41, 1, 0, 25) -- povo
+VALUES (41, 1, 0, 25); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (41, 5, 0, -50) -- exército
+VALUES (41, 5, 0, -50); -- exército
 
 -- 42
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('Os soldados estão desmotivados e o moral é baixo. Um ataque audacioso pode restaurar a confiança, mas a perda será grande.', 7, 5)
+VALUES ('Os soldados estão desmotivados e o moral é baixo. Um ataque audacioso pode restaurar a confiança, mas a perda será grande.', 7, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Lidere a ofensiva! O sacrifício é necessário!', 1, 42)
+VALUES ('Lidere a ofensiva! O sacrifício é necessário!', 1, 42);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos dar um tempo e permitir que se recuperem.', 0, 42)
+VALUES ('Vamos dar um tempo e permitir que se recuperem.', 0, 42);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (42, 5, 1, 50) -- exército
+VALUES (42, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (42, 1, 1, 25) -- povo
+VALUES (42, 1, 1, 25); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (42, 4, 1, -25) -- economia
+VALUES (42, 4, 1, -25); -- economia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (42, 3, 1, -25) -- diplomacia
+VALUES (42, 3, 1, -25); -- diplomacia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (42, 1, 0, 25) -- povo
+VALUES (42, 1, 0, 25); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (42, 5, 0, -25) -- exército
+VALUES (42, 5, 0, -25); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (42, 3, 0, 25) -- diplomacia
+VALUES (42, 3, 0, 25); -- diplomacia
 
 -- 43
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('Seus avanços nos preocupam. A França não ficará parada enquanto vocês expandem seu império. Está disposto a negociar um acordo?', 2, 5)
+VALUES ('Seus avanços nos preocupam. A França não ficará parada enquanto vocês expandem seu império. Está disposto a negociar um acordo?', 2, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Não temos tempo para negociações!', 1, 43)
+VALUES ('Não temos tempo para negociações!', 1, 43);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Sim, vamos discutir um tratado.', 0, 43)
+VALUES ('Sim, vamos discutir um tratado.', 0, 43);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (43, 5, 1, 50) -- exército
+VALUES (43, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (43, 3, 1, -25) -- diplomacia
+VALUES (43, 3, 1, -25); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (43, 4, 1, -25) -- economia
+VALUES (43, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (43, 3, 0, 50) -- diplomacia
+VALUES (43, 3, 0, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (43, 5, 0, -25) -- exército
+VALUES (43, 5, 0, -25); -- exército
 
 -- 44
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A Grã-Bretanha está preocupada com a sua situação. Se não tomarem medidas, podemos considerar o apoio a seus inimigos.', 1, 5)
+VALUES ('A Grã-Bretanha está preocupada com a sua situação. Se não tomarem medidas, podemos considerar o apoio a seus inimigos.', 1, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Não precisamos da Grã-Bretanha!', 1, 44)
+VALUES ('Não precisamos da Grã-Bretanha!', 1, 44);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos trabalhar juntos para evitar um conflito maior.', 0, 44)
+VALUES ('Vamos trabalhar juntos para evitar um conflito maior.', 0, 44);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (44, 3, 1, -50) -- diplomacia
+VALUES (44, 3, 1, -50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (44, 5, 1, 25) -- exército
+VALUES (44, 5, 1, 25); -- exército
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (44, 3, 0, 50) -- diplomacia
+VALUES (44, 3, 0, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (44, 5, 0, -25) -- exército
+VALUES (44, 5, 0, -25); -- exército
 
 -- 45
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A guerra está afetando a moral do povo. A Igreja pode oferecer apoio, mas precisamos de garantias de que a violência não será em vão.', 3, 5)
+VALUES ('A guerra está afetando a moral do povo. A Igreja pode oferecer apoio, mas precisamos de garantias de que a violência não será em vão.', 3, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('A vitória trará redenção, padre. Apoie-nos!', 1, 45)
+VALUES ('A vitória trará redenção, padre. Apoie-nos!', 1, 45);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Desculpe, mas a guerra é inevitável.', 0, 45)
+VALUES ('Desculpe, mas a guerra é inevitável.', 0, 45);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (45, 2, 1, 50) -- igreja
+VALUES (45, 2, 1, 50); -- igreja
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (45, 3, 1, -25) -- diplomacia
+VALUES (45, 3, 1, -25); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (45, 4, 1, -25) -- economia
+VALUES (45, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (45, 2, 0, -50) -- igreja
+VALUES (45, 2, 0, -50); -- igreja
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (45, 5, 0, 25) -- exército
+VALUES (45, 5, 0, 25); -- exército
 
 -- 46
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A Igreja está preocupada com o sofrimento das almas. 
-Podemos ajudar a restaurar a esperança, mas será necessário abordar o povo sobre o impacto da guerra.', 4, 5)
+VALUES ('A Igreja está preocupada com o sofrimento das almas. Podemos ajudar a restaurar a esperança, mas será necessário abordar o povo sobre o impacto da guerra.', 4, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Façam um apelo ao povo em apoio à guerra!', 1, 46)
+VALUES ('Façam um apelo ao povo em apoio à guerra!', 1, 46);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('A Igreja deve ficar neutra.', 0, 46)
+VALUES ('A Igreja deve ficar neutra.', 0, 46);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (46, 2, 1, 50) -- igreja
+VALUES (46, 2, 1, 50); -- igreja
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (46, 1, 1, 25) -- povo
+VALUES (46, 1, 1, 25); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (46, 3, 1, -25) -- diplomacia
+VALUES (46, 3, 1, -25); -- diplomacia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (46, 3, 0, 50) -- diplomacia
+VALUES (46, 3, 0, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (46, 2, 0, -50) -- igreja
+VALUES (46, 2, 0, -50); -- igreja
 
 -- 47
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A guerra está custando uma fortuna, e precisamos garantir que os empréstimos sejam pagos. 
-Podemos aumentar os impostos para financiar o esforço de guerra?', 9, 5)
+VALUES ('A guerra está custando uma fortuna, e precisamos garantir que os empréstimos sejam pagos. Podemos aumentar os impostos para financiar o esforço de guerra?', 9, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Sim, aumente os impostos! Precisamos dos recursos!', 1, 47)
+VALUES ('Sim, aumente os impostos! Precisamos dos recursos!', 1, 47);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Não, não podemos sobrecarregar a população.', 0, 47)
+VALUES ('Não, não podemos sobrecarregar a população.', 0, 47);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (47, 4, 1, 50) -- economia
+VALUES (47, 4, 1, 50); -- economia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (47, 1, 1, -25) -- povo
+VALUES (47, 1, 1, -25); -- povo
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (47, 1, 0, 50) -- povo
+VALUES (47, 1, 0, 50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (47, 4, 0, -50) -- economia
+VALUES (47, 4, 0, -50); -- economia
 
 -- 48
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('As interrupções nas rotas comerciais estão afetando meus negócios. A guerra precisa acabar, ou todos sofreremos economicamente.', 10, 5)
+VALUES ('As interrupções nas rotas comerciais estão afetando meus negócios. A guerra precisa acabar, ou todos sofreremos economicamente.', 10, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('O sacrifício é necessário para a unificação!', 1, 48)
+VALUES ('O sacrifício é necessário para a unificação!', 1, 48);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos negociar uma trégua!', 0, 48)
+VALUES ('Vamos negociar uma trégua!', 0, 48);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (48, 5, 1, 50) -- exército
+VALUES (48, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (48, 1, 1, -25) -- povo
+VALUES (48, 1, 1, -25); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (48, 4, 1, -25) -- economia
+VALUES (48, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (48, 3, 0, 50) -- diplomacia
+VALUES (48, 3, 0, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (48, 5, 0, -25) -- exército
+VALUES (48, 5, 0, -25); -- exército
 
 -- 49
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('Os trabalhadores estão enfrentando dificuldades devido à guerra. Precisamos de melhores condições ou haverá revoltas.', 5, 5)
+VALUES ('Os trabalhadores estão enfrentando dificuldades devido à guerra. Precisamos de melhores condições ou haverá revoltas.', 5, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Conceder melhorias, mas precisamos aumentar os impostos.', 1, 49)
+VALUES ('Conceder melhorias, mas precisamos aumentar os impostos.', 1, 49);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('A guerra é mais importante. Sejam pacientes!', 0, 49)
+VALUES ('A guerra é mais importante. Sejam pacientes!', 0, 49);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (49, 1, 1, 50) -- povo
+VALUES (49, 1, 1, 50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (49, 4, 1, -50) -- economia
+VALUES (49, 4, 1, -50); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (49, 1, 0, -50) -- povo
+VALUES (49, 1, 0, -50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (49, 5, 0, 25) -- exército
+VALUES (49, 5, 0, 25); -- exército
 
 -- 50
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('O povo está cansado de ouvir sobre vitórias enquanto passamos fome. Se a situação não mudar, haverá consequências.', 6, 5)
+VALUES ('O povo está cansado de ouvir sobre vitórias enquanto passamos fome. Se a situação não mudar, haverá consequências.', 6, 5);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Envie mais suprimentos para o exército!', 1, 50)
+VALUES ('Envie mais suprimentos para o exército!', 1, 50);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Prometemos mais assistência para os civis.', 0, 50)
+VALUES ('Prometemos mais assistência para os civis.', 0, 50);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (50, 5, 1, 50) -- exército
+VALUES (50, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (50, 1, 1, -25) -- povo
+VALUES (50, 1, 1, -25); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (50, 4, 1, -25) -- economia
+VALUES (50, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (50, 1, 0, 50) -- povo
+VALUES (50, 1, 0, 50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (50, 5, 0, -50) -- exército
+VALUES (50, 5, 0, -50); -- exército
 
 -- 51
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('As forças inimigas estão em avanço, e precisamos de mais tropas imediatamente. Isso custará caro, mas se não agirmos, perderemos tudo.', 7, 6)
+VALUES ('As forças inimigas estão em avanço, e precisamos de mais tropas imediatamente. Isso custará caro, mas se não agirmos, perderemos tudo.', 7, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Recrutem mais soldados! A vitória justifica o custo!', 1, 51)
+VALUES ('Recrutem mais soldados! A vitória justifica o custo!', 1, 51);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos nos concentrar na defesa e economizar recursos.', 0, 51)
+VALUES ('Vamos nos concentrar na defesa e economizar recursos.', 0, 51);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (51, 5, 1, 50) -- exército
+VALUES (51, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (51, 4, 1, -50) -- economia
+VALUES (51, 4, 1, -50); -- economia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (51, 1, 1, -25) -- povo
+VALUES (51, 1, 1, -25); -- povo
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (51, 4, 0, 50) -- economia
+VALUES (51, 4, 0, 50); -- economia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (51, 5, 0, -50) -- exército
+VALUES (51, 5, 0, -50); -- exército
 
 -- 52
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A resistência está se tornando mais feroz. Uma nova estratégia de ataque pode ser arriscada, 
-mas pode ser o que precisamos para mudar o curso da guerra.', 8, 6)
+VALUES ('A resistência está se tornando mais feroz. Uma nova estratégia de ataque pode ser arriscada, mas pode ser o que precisamos para mudar o curso da guerra.', 8, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Lidere o ataque com todas as forças disponíveis!', 1, 52)
+VALUES ('Lidere o ataque com todas as forças disponíveis!', 1, 52);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos esperar e fortalecer nossas defesas.', 0, 52)
+VALUES ('Vamos esperar e fortalecer nossas defesas.', 0, 52);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (52, 5, 1, 50) -- exército
+VALUES (52, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (52, 3, 1, -50) -- diplomacia
+VALUES (52, 3, 1, -50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (52, 4, 1, -50) -- economia
+VALUES (52, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (52, 3, 0, 50) -- diplomacia
+VALUES (52, 3, 0, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (52, 5, 0, -50) -- exército
+VALUES (52, 5, 0, -50); -- exército
+
+
+-- 53
 
 -- 53
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('Se a sua nação não se unir a nós contra o Eixo, podemos não conseguir enfrentar a ameaça. O que decide?', 1, 6)
+VALUES ('Os oficiais superiores estão sugerindo uma mudança na liderança das tropas para melhorar a moral. Isso poderia aumentar a confiança dos soldados, mas também pode causar instabilidade.', 7, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Estamos juntos nessa luta!', 1, 53)
+VALUES ('Apoie a mudança de liderança!', 1, 53);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Precisamos focar em nossos próprios interesses.', 0, 53)
+VALUES ('Mantenha a liderança atual para evitar riscos.', 0, 53);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (53, 3, 1, 50) -- diplomacia
+VALUES (53, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (53, 5, 1, 25) -- exército
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (53, 4, 1, -25) -- economia
+VALUES (53, 3, 1, -25); -- diplomacia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (53, 3, 0, -50) -- diplomacia
+VALUES (53, 3, 0, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (53, 4, 0, 25) -- economia
+VALUES (53, 5, 0, -25); -- exército
 
 -- 54
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A Grã-Bretanha está fazendo esforços enormes para resistir. Um acordo de ajuda mútua pode beneficiar ambos, mas também exigirá compromissos.', 2, 6)
+VALUES ('A artilharia inimiga está causando sérios danos. Devemos redirecionar nossos recursos para aumentar nossa capacidade defensiva?', 8, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos firmar um pacto de ajuda!', 1, 54)
+VALUES ('Sim, priorizem a defesa!', 1, 54);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Devemos cuidar dos nossos interesses primeiro.', 0, 54)
+VALUES ('Não, mantenham o foco no ataque!', 0, 54);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (54, 3, 1, 50) -- diplomacia
+VALUES (54, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (54, 4, 1, -50) -- economia
+VALUES (54, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (54, 3, 0, -50) -- diplomacia
+VALUES (54, 4, 0, 50); -- economia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (54, 4, 0, 50) -- economia
+VALUES (54, 5, 0, -50); -- exército
 
 -- 55
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A guerra está devastando a Europa, e muitas almas estão perdidas. Precisamos encontrar uma maneira de trazer paz e esperança ao povo.', 4, 6)
+VALUES ('A guerra está se prolongando e as condições nas frentes de batalha estão se deteriorando. Devemos enviar reforços?', 9, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos declarar um apelo à paz!', 1, 55)
+VALUES ('Envie mais reforços imediatamente!', 1, 55);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('A guerra é necessária para a sobrevivência.', 0, 55)
+VALUES ('Não, vamos aguardar uma oportunidade melhor.', 0, 55);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (55, 2, 1, 50) -- igreja
+VALUES (55, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (55, 1, 1, 25) -- povo
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (55, 5, 1, -50) -- exército
+VALUES (55, 4, 1, -50); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (55, 2, 0, -50) -- igreja
+VALUES (55, 5, 0, -25); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (55, 5, 0, 25) -- exército
+VALUES (55, 4, 0, 50); -- economia
 
 -- 56
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A Igreja pode ajudar a guiar o povo em tempos de crise. Podemos organizar serviços para apoio, mas isso pode não agradar a todos.', 3, 6)
+VALUES ('As tropas estão cansadas e os recursos são limitados. Devemos recuar para preservar nossas forças?', 8, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos promover serviços de apoio!', 1, 56)
+VALUES ('Sim, recuem e reagrupem.', 1, 56);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Devemos evitar a política.', 0, 56)
+VALUES ('Não, continuem avançando!', 0, 56);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (56, 2, 1, 50) -- igreja
+VALUES (56, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (56, 1, 1, 50) -- povo
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (56, 4, 1, -50) -- economia
+VALUES (56, 4, 1, -25); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (56, 2, 0, -50) -- igreja
+VALUES (56, 5, 0, -50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (56, 4, 0, 50) -- economia
+VALUES (56, 4, 0, 50); -- economia
 
 -- 57
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('Os custos da guerra estão subindo, e precisamos garantir que os empréstimos sejam pagos. Podemos aumentar os juros para cobrir as despesas.', 9, 6)
+VALUES ('Há relatos de motins entre as tropas devido à falta de comida e suprimentos. Como devemos lidar com isso?', 9, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Aumente os juros! Precisamos do dinheiro!', 1, 57)
+VALUES ('Reprimam os motins com força.', 1, 57);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos manter as taxas justas.', 0, 57)
+VALUES ('Negociem com as tropas e ofereçam suprimentos.', 0, 57);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (57, 4, 1, 50) -- economia
+VALUES (57, 5, 1, -50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (57, 1, 1, -50) -- povo
+VALUES (57, 4, 1, 50); -- economia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (57, 1, 0, 50) -- povo
+VALUES (57, 5, 0, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (57, 4, 0, -50) -- economia
+VALUES (57, 4, 0, -50); -- economia
 
 -- 58
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('A guerra interrompeu nosso comércio. Se não encontrarmos maneiras de continuar as operações, muitos de nós perderemos tudo.', 10, 6)
+VALUES ('Estamos perdendo apoio internacional. Deveríamos focar em restaurar nossas relações diplomáticas?', 10, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Vamos redirecionar os recursos para a guerra!', 1, 58)
+VALUES ('Sim, precisamos de aliados.', 1, 58);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Devemos buscar acordos comerciais com países neutros.', 0, 58)
+VALUES ('Não, a vitória militar é o mais importante.', 0, 58);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (58, 5, 1, 50) -- exército
+VALUES (58, 3, 1, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (58, 4, 1, -50) -- economia
-INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (58, 1, 1, -25) -- povo
+VALUES (58, 5, 1, -25); -- exército
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (58, 3, 0, 50) -- diplomacia
+VALUES (58, 5, 0, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (58, 5, 0, -50) -- exército
+VALUES (58, 3, 0, -50); -- diplomacia
 
 -- 59
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('Os trabalhadores estão cansados e enfrentando dificuldades. Se não houver mudanças, a insatisfação aumentará.', 5, 6)
+VALUES ('O povo está exigindo um fim imediato à guerra. Como devemos proceder?', 6, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Podem organizar uma greve!', 1, 59)
+VALUES ('Ignorem as demandas e continuem a lutar.', 1, 59);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Concederei melhores condições de trabalho.', 0, 59)
+VALUES ('Comecem negociações de paz.', 0, 59);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (59, 1, 1, -50) -- povo
+VALUES (59, 1, 1, -50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (59, 5, 1, -50) -- exército
+VALUES (59, 5, 1, 50); -- exército
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (59, 1, 0, 50) -- povo
+VALUES (59, 1, 0, 50); -- povo
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (59, 4, 0, -50) -- economia
+VALUES (59, 5, 0, -50); -- exército
 
 -- 60
 
 INSERT INTO Dialogo (mensagem, id_personagem, id_era) 
-VALUES ('O povo está sofrendo com a guerra. Precisamos de mais alimentos e apoio do governo, ou a revolta se tornará inevitável.', 6, 6)
+VALUES ('Os líderes militares estão divididos sobre a estratégia final. Devemos continuar a guerra ou buscar um tratado de paz?', 7, 6);
 
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Envie mais recursos para os soldados!', 1, 60)
+VALUES ('Continuem a guerra até a vitória!', 1, 60);
 INSERT INTO RespostasTexto (conteudo, escolha, id_dialogo) 
-VALUES ('Prometemos assistência alimentar ao povo.', 0, 60)
+VALUES ('Busquem um tratado de paz para acabar com a guerra.', 0, 60);
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (60, 5, 1, 50) -- exército
+VALUES (60, 5, 1, 50); -- exército
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (60, 1, 1, -50) -- povo
+VALUES (60, 3, 1, -25); -- diplomacia
 
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (60, 1, 0, 50) -- povo
+VALUES (60, 3, 0, 50); -- diplomacia
 INSERT INTO Consequencia (dialogo_id, conquista_id, resposta, valor_mudanca) 
-VALUES (60, 5, 0, -50) -- exército
+VALUES (60, 5, 0, -50); -- exército
 
-SELECT * FROM Personagem 
+
+SELECT * FROM Dialogo where id_era = 4
 
 DBCC CHECKIDENT ('Conquistas', RESEED, 0); -- isso reseta o identity (autoincremento do id)
 DBCC CHECKIDENT ('ConquistasUsuario', RESEED, 1)
-DBCC CHECKIDENT ('Consequencia', RESEED, 1)
-DBCC CHECKIDENT ('Dialogo', RESEED, 1)
-DBCC CHECKIDENT ('Era', RESEED, 1)
+DBCC CHECKIDENT ('Consequencia', RESEED, 0)
+DBCC CHECKIDENT ('Dialogo', RESEED, 0)
+DBCC CHECKIDENT ('Era', RESEED, 0)
 DBCC CHECKIDENT ('Personagem', RESEED, 1)
-DBCC CHECKIDENT ('RespostasTexto', RESEED, 1)
+DBCC CHECKIDENT ('RespostasTexto', RESEED, 0)
 DBCC CHECKIDENT ('Usuario', RESEED, 1)
 
 select * from Consequencia where dialogo_id = 1 and resposta = 1

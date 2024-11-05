@@ -1,6 +1,8 @@
 CREATE DATABASE deutschland_game;
 USE deutschland_game;
 
+select * from Usuario 
+
 CREATE TABLE Usuario (
     id BIGINT IDENTITY PRIMARY KEY,
     nome_usuario VARCHAR(64) NOT NULL
